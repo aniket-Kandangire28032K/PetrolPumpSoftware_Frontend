@@ -1,0 +1,1404 @@
+/* Login Page */
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  min-height: 100dvh;
+  /* background-color: #000000; */
+  display: flex;
+  z-index: 999;
+}
+.login-page .login-img {
+  width: 70%;
+  display: inline-block;
+  min-height: 80dvh;
+  background-image: url("./assets/img/fuel_station_1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.login-page form h1 {
+  color: white;
+  color: #008080;
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+.login-page form {
+  width: 30%;
+  min-height: 50dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #150035;
+  background-color: #fff;
+  box-shadow: 0 -10px;
+}
+.login-page form div {
+  width: 60%;
+  margin: 0.3rem;
+  position: relative;
+}
+
+.login-page form div input {
+  padding: 0.7rem;
+  width: 100%;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  /* border-bottom: 2px solid #fff; */
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid #000;
+  background-color: transparent;
+  color: white;
+  color: royalblue;
+}
+.login-page form input::placeholder {
+  color: #ccc;
+  color: grey;
+}
+.login-page form div .show-btn {
+  border: none;
+  color: #555;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  transition: all ease-in-out 0.5s;
+  background-color: transparent;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.2rem;
+}
+.login-page form div .show-btn:hover {
+  transform: scale(1.2);
+}
+
+.login-page form .login-btn {
+  padding: 0.5rem;
+  width: 60%;
+  margin: 0.2rem auto;
+  font-weight: 500;
+  color: white;
+  border: none;
+  background-color: #008080;
+  border-radius: 9px;
+  font-size: 1.5rem;
+  transition: all ease-in-out 0.2s;
+}
+.login-page form .login-btn:hover {
+  background-color: #00a3a3;
+  box-shadow: 0 0px 20px #ffffff80;
+  transform: scale(1.01);
+}
+.login-page form .login-btn:active {
+  background-color: #005c5c;
+}
+
+/* Home Page */
+.home {
+  padding-top: 0.7rem;
+}
+.home .status {
+  padding: 0 1rem;
+  margin: 0 auto;
+  padding-top: 0.7rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.home .status > div {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  color: white;
+  transition: all ease-in-out 0.2s;
+  animation: popup 0.4s ease-in-out;
+}
+.home .status > div:hover {
+  box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* popup animation */
+
+@keyframes popup {
+  0% {
+    transform: scale(0);
+    /* opacity: 0; */
+  }
+  100% {
+    transform: scale(1);
+    /* opacity: 1; */
+  }
+}
+
+.home .status > div > div {
+  text-align: end;
+}
+.home .status > div > div > h1 {
+  font-size: 2.8rem;
+}
+.home .status > div:nth-of-type(1) {
+  background-color: #28b34a;
+}
+.home .status > div:nth-of-type(2) {
+  background-color: #0080ff;
+}
+.home .status > div:nth-of-type(3) {
+  background-color: crimson;
+}
+.home .status > div:nth-of-type(4) {
+  background-color: #6787b8;
+}
+.home .chart-area {
+  width: 25%;
+  outline: 2px solid #eeeeee80;
+  border-radius: 6px;
+  margin: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.7rem;
+  transition: all ease-in-out 0.2s;
+  background-color: #fff;
+  box-shadow: 0 4px 8px #cccccc80;
+  transition: all ease 0.2s;
+}
+.home .chart-area:hover {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2) ;
+}
+@scope (.home) {
+  .rates {
+    width: 30%;
+    padding: 0.5rem;
+    margin: 1rem;
+    background-color: #fff;
+    border-radius: 6px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    box-shadow: 0 4px 8px #cccccc80;  
+    transition: all ease 0.2s;
+  }
+  .rates:hover{
+    box-shadow:0 4px 8px  rgb(0 0 0 / 0.2);
+  }
+    
+  .rates h3 {
+    text-align: center;
+    color: #005fff;
+  }
+  .edit {
+    padding: 0.5rem 1rem;
+    border-radius:0 6px 0 8px ;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    background-color: gold;
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .edit:hover {
+    background-color: goldenrod;
+    color: #fff;
+  }
+  table {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin-top: 0.5rem;
+  }
+  thead tr th {
+    background-color: royalblue;
+    color: #fff;
+    padding: 0.2rem 0;
+    border: none;
+  }
+  tbody tr td {
+    text-transform: uppercase;
+    color: #555;
+    padding: 0.5rem 0;
+  }
+  tbody tr td input {
+    padding: 0.5rem;
+    border: none;
+  }
+  .rates-edit {
+    position: fixed;
+    padding-top: 1.5rem;
+    width: 50%;
+    height: max-content;
+    top: 50%;
+    left: 50%;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 0 1500px rgb(0 0 0 / 0.5);
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .rates-edit h3 {
+    color: #3d3d3d;
+  }
+  .rates-edit table {
+    border-radius: 0;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .rates-edit table thead tr th {
+    background-color: #3d3d3d;
+    border: none;
+  }
+  .rates-edit table thead tr th:last-of-type {
+    width: 20%;
+  }
+  .rates-edit button {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: none;
+    color: #fff;
+  }
+  .rates-edit button:first-of-type {
+    background-color: royalblue;
+    box-shadow: 0px 10px 0 5px royalblue;
+    width: 50%;
+    font-size: 1.2rem;
+  }
+  .rates-edit button:nth-of-type(2) {
+    background-color: crimson;
+    box-shadow: 0 1px 1px 1px crimson;
+    font-size: 1.2rem;
+    width: 50%;
+  }
+}
+
+/* tanker-entry Page */
+.tanker-entry h1 {
+  text-align: center;
+  padding-top: 0.3rem;
+}
+.tanker-entry form {
+  width: 100%;
+  padding: 0.1rem 2rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+.tanker-entry form div {
+  grid-column: span 1;
+  /* border: 1px solid; */
+  display: flex;
+}
+.tanker-entry form div label {
+  width: 30%;
+  white-space: nowrap;
+}
+.tanker-entry form div input {
+  width: 70%;
+  padding: 0.3rem;
+}
+.tanker-entry form div:last-of-type {
+  text-align: center;
+
+  grid-column: span 3;
+}
+.tanker-entry form div:last-of-type > button {
+  padding: 0.5rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #22252d;
+  margin: 0 1rem;
+}
+.tanker-entry form div button:nth-of-type(2) {
+  background-color: grey;
+}
+@scope (.tanker-entry) {
+  .items {
+    grid-column: span 3 !important;
+  }
+  .items table {
+    width: 100%;
+  }
+  tr td {
+    padding: 0.2rem 0;
+  }
+  .del-btn {
+    color: crimson;
+    background-color: transparent;
+    font-weight: 900;
+    border: none;
+    font-size: 1.2rem;
+  }
+  .add-btn {
+    border: none;
+    padding: 0 0.3rem;
+    color: royalblue;
+    background-color: transparent;
+    font-weight: 700;
+    border-bottom: 2px solid;
+  }
+}
+/* cutomers page */
+.customer-nav {
+  width: 100%;
+  /* background-color: #fff; */
+  text-align: end;
+  /* box-shadow: 0 10px 15px -10px rgba(0, 0, 0, 0.25); */
+  /* animation: popup 0.2s ease-in; */
+}
+.customer-nav button {
+  background-color: #ececec;
+  padding: 0.1rem 1rem;
+  color: darkgrey;
+  border: none;
+  font-weight: 700;
+  transition: all ease-in-out 0.2s;
+  border-bottom: 1px solid transparent;
+}
+.customer-nav button:hover {
+  color: #000000aa;
+  border-bottom: 1px solid #000;
+  transform: none;
+}
+
+/* error page */
+.error-page {
+  min-height: 100dvh;
+  width: 100%;
+  place-items: center;
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+  z-index: 50;
+  position: fixed;
+  top: 0;
+}
+.error-page h1 {
+  font-size: 6rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.error-page .link-para a {
+  text-decoration: none;
+  margin: 0 0.7rem;
+  padding: 0.5rem 1rem;
+  color: var(--primaryColor);
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: all ease-in-out 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.error-page .link-para a:hover {
+  color: #333;
+  border-bottom: 2px solid #111;
+}
+
+/* Access Page */
+.access h2 {
+  text-align: center;
+  padding: 0.5rem;
+}
+@scope(.access){
+  .add-btn{
+    background-color: #0080ff;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all ease-in-out 0.2s;
+  }
+  .add-btn:hover{
+    background-color: #007fff;
+    background-color: #000fff;
+  }
+  .form-div{
+    position: absolute;
+    width: 100%;
+    height:95dvh;
+    background-color: #000000cc;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+  }
+  form{
+    background-color: #f7f7f7;
+    width: 50%;
+    border-radius: 6px;
+    padding:2rem 1rem;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+  }
+  form h2{
+    padding: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #008080;
+  }
+  form input,form select{
+    width: 60%;
+    font-size: 1.1rem;
+    align-self: center;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 0.2);
+    border-radius: 6px;
+  }
+  form input::placeholder{
+    color: #aaa;
+  }
+  form .btn-grp{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-self: center;
+    padding-top: 1rem;
+  }
+  .btn-grp button{
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 30%;
+    font-weight: 500;
+    border-radius: 6px;
+    color: #fff;
+  }
+  .btn-grp button:first-of-type{
+    background-color: #007fff;
+  }
+  .btn-grp button:last-of-type{
+    background-color: crimson;
+  }
+}
+.access .user-list {
+  width: 100%;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: 1rem 1.2rem;
+}
+.access .user-list .user-card {
+  border: none;
+  padding-top: 1.2rem;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  animation: popup 0.3s ease-in-out;
+}
+.access .user-list .user-card p {
+  padding: 0 1.5rem;
+}
+.access .user-list .user-card .card-btns {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  overflow: hidden;
+}
+.access .user-list .user-card .card-btns button {
+  flex: 1;
+  padding: 0.7rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+.access .user-list .user-card .card-btns button:nth-of-type(1) {
+  background-color: teal;
+}
+.access .user-list .user-card .card-btns button:nth-of-type(2) {
+  background-color: crimson;
+}
+.access .user-list .user-card .card-btns button:hover {
+  transform: scale(1);
+}
+
+.supplier h2 {
+  text-align: center;
+}
+.supplier form {
+  background-color: #f8f8f8;
+  width: 70%;
+  margin: 0 auto;
+  border: none;
+  margin-top: 1.5rem;
+  padding: 2rem 0 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  animation: popup 0.2s ease-in-out;
+}
+.supplier form div {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid; */
+}
+.supplier form div label {
+  font-size: 1.3rem;
+  color: #444;
+}
+.supplier form div input,
+.supplier form div select {
+  width: 70%;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  background-color: transparent;
+  border-bottom: 2px solid #888;
+}
+.supplier form div select option {
+  text-transform: uppercase;
+}
+.supplier form .btn-grp {
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+  gap: 1rem 2.3rem;
+}
+.supplier form .btn-grp button {
+  font-weight: 500;
+  padding: 0.3rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #fff;
+  text-transform: capitalize;
+  outline: 3px solid;
+}
+.supplier form .btn-grp button:nth-of-type(1) {
+  color: #28b34a;
+}
+.supplier form .btn-grp button:nth-of-type(2) {
+  color: crimson;
+}
+.supplier form .btn-grp button:first-of-type:hover {
+  background-color: #28b34a;
+  box-shadow: 0 0 0 5px #28b34a40;
+}
+.supplier form .btn-grp button:last-of-type:hover {
+  background-color: crimson;
+  box-shadow: 0 0 0 5px rgba(220, 20, 60, 0.416);
+}
+.supplier form .btn-grp button:hover {
+  box-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.24) inset,
+    5px 5px 5px rgba(255, 255, 255, 0.24) inset;
+  color: #fff;
+  outline: 2px solid transparent;
+}
+
+.manage-supplier h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #3d3d3d;
+  margin: 1rem 0;
+}
+.manage-supplier a {
+  text-decoration: none;
+  background-color: #d3d3d3;
+  color: #111;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  transition: all ease 0.5s;
+  border-radius: 8px;
+  outline: 2px solid grey;
+}
+.manage-supplier a:hover {
+  background-color: grey;
+  color: #fff;
+  outline-color: grey;
+}
+.manage-supplier table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1.2rem;
+  animation: popup 0.2s ease-in-out;
+}
+.manage-supplier table thead tr th {
+  background-color: #000000aa;
+  padding: 0.7rem;
+  color: white;
+  border: none;
+}
+.manage-supplier table tbody tr td:nth-of-type(6) {
+  text-transform: uppercase;
+}
+.manage-supplier table tbody tr td {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #000;
+  text-align: center;
+}
+.manage-supplier table tbody tr td:nth-of-type(2),
+.manage-supplier table tbody tr td:nth-of-type(5) {
+  text-transform: capitalize;
+}
+.manage-supplier table tbody tr .actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+.manage-supplier table tbody tr .actions button {
+  flex: 1;
+  font-weight: 700;
+  margin: 0.2rem 0;
+  padding: 0.3rem 1rem;
+  border: none;
+  color: white;
+}
+.manage-supplier table tbody tr .actions button:nth-of-type(1) {
+  background-color: royalblue;
+}
+.manage-supplier table tbody tr .actions button:nth-of-type(2) {
+  background-color: crimson;
+}
+
+.manage-supplier .editForm {
+  width: 70%;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 15000px 1500px rgba(0, 0, 0, 0.7);
+  height: max-content;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 90;
+}
+.manage-supplier .editForm h2 {
+  grid-column: span 4;
+}
+.manage-supplier .editForm div {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+.manage-supplier .editForm div input {
+  padding: 0.3rem;
+  margin-top: 0.6rem;
+  padding-left: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid #00000080;
+  border-radius: 8px;
+}
+.manage-supplier .editForm .buttons {
+  grid-column: span 4;
+  flex-direction: row;
+  gap: 1rem;
+}
+.manage-supplier .editForm .buttons button {
+  font-weight: 500;
+  font-size: 1.2rem;
+  background-color: #fff;
+  width: 10%;
+  padding: 0.5rem 0;
+  border: 3px solid;
+  border-radius: 7px;
+  transition: all ease 0.2s;
+  animation: none;
+}
+.manage-supplier .editForm .buttons button:first-of-type {
+  color: royalblue;
+}
+.manage-supplier .editForm .buttons button:nth-of-type(2) {
+  color: crimson;
+}
+.manage-supplier .editForm .buttons button:first-of-type:hover {
+  background-color: royalblue;
+  color: white;
+}
+.manage-supplier .editForm .buttons button:last-of-type:hover {
+  background-color: crimson;
+  color: white;
+}
+.add-fuel {
+  width: 100%;
+}
+.add-fuel h1 {
+  text-align: center;
+}
+.add-fuel form {
+  /* border: 1px solid ; */
+  width: 90%;
+  padding: 1rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 2rem;
+}
+.add-fuel form div {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+}
+.add-fuel form div label {
+  font-size: 1.1rem;
+  color: #3d3d3d;
+}
+.add-fuel form div input {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+  width: 80%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 0.2);
+}
+.add-fuel form div select {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+  width: 80%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 0.2);
+}
+.add-fuel form .btn-grp {
+  flex-direction: row;
+  grid-column: span 4;
+  gap: 1rem 2rem;
+}
+.add-fuel form .btn-grp button {
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  background-color: #fff;
+  /* font-weight: bold; */
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  box-shadow:
+    6px 6px 12px #c5c5c5,
+    -6px -6px 12px #ffffff;
+}
+.add-fuel form .btn-grp button:first-of-type {
+  color: royalblue;
+}
+.add-fuel form .btn-grp button:first-of-type:hover {
+  color: #fff;
+  background-color: royalblue;
+  box-shadow: 0 0 0 5px rgba(65, 105, 225, 0.504);
+}
+.add-fuel form .btn-grp button:last-of-type:hover {
+  color: #fff;
+  background-color: crimson;
+  box-shadow: 0 0 0 5px rgba(220, 20, 60, 0.504);
+}
+.add-fuel form .btn-grp button:last-of-type {
+  color: crimson;
+}
+
+/* Manage Fuel */
+.manage-fuel h1 {
+  text-align: center;
+  color: #008f8f;
+}
+.manage-fuel a {
+  text-decoration: none;
+  color: white;
+  background-color: grey;
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  outline: 1px solid grey;
+  margin-left: 0.2rem;
+  overflow: hidden;
+  transition: all ease-in-out 0.3s;
+}
+.manage-fuel a:hover {
+  background-color: darkgrey;
+}
+.manage-fuel table {
+  border-collapse: collapse;
+  user-select: none;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 0.9rem;
+  vertical-align: middle;
+}
+@scope (.manage-fuel) {
+  tr th {
+    border: none;
+  }
+  tr td {
+    border: 1px solid #ccc;
+  }
+}
+.manage-fuel table thead tr th {
+  background-color: royalblue;
+  color: #fff;
+  padding: 0.5rem;
+}
+.manage-fuel table tbody tr td {
+  text-align: center;
+  text-transform: capitalize;
+  width: max-content;
+}
+.manage-fuel table tbody tr td button {
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem;
+}
+.manage-fuel table tbody tr td:first-of-type,
+.manage-fuel table tbody tr td:nth-of-type(3),
+.manage-fuel table tbody tr td:nth-of-type(4) {
+  width: 7%;
+}
+.manage-fuel table tbody tr td:last-of-type {
+  width: 12%;
+}
+.manage-fuel table tbody tr td button {
+  border: none;
+  font-weight: 500;
+}
+.manage-fuel table tbody tr td button:first-of-type {
+  background-color: #008fff;
+  color: #fff;
+}
+.manage-fuel table tbody tr td button:last-of-type {
+  background-color: crimson;
+  color: #fff;
+}
+.manage-fuel table tbody tr td button:last-of-type:hover {
+  background-color: tomato;
+}
+
+@scope (.staff) {
+  h2 {
+    text-align: center;
+    padding: 0.3rem;
+    text-transform: uppercase;
+  }
+  .add-btn {
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 0 8px 8px 0;
+    color: #fff;
+    background-color: royalblue;
+  }
+  .addstaff {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+  }
+  .addstaff form {
+    width: 50%;
+    background-color: #fff;
+    min-height: max-content;
+    margin: 0.5rem auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    anchor-name: --form-anchor;
+  }
+  .addstaff form button:first-of-type {
+    position: absolute;
+    top: anchor(--form-anchor top);
+    right: anchor(--form-anchor right);
+    padding: 0.3rem;
+    color: #fff;
+    font-size: 2rem;
+    background-color: crimson;
+    line-height: 1rem;
+    border: none;
+    border-radius: 0 8px 0 8px;
+    outline: 1px solid crimson;
+  }
+  .addstaff form h3 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .addstaff form button[type="submit"] {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    background-color: royalblue;
+    color: white;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .addstaff form label {
+    font-weight: 500;
+  }
+  .addstaff form input:first-of-type {
+    text-transform: capitalize;
+  }
+  .addstaff form input,
+  .addstaff form select {
+    padding: 0.5rem 1rem;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px rgb(0 0 0 / 0.2);
+  }
+  table {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  th {
+    background-color: royalblue;
+    color: #fff;
+    padding: 0.3rem;
+    border: none;
+  }
+  tr td {
+    color: #333;
+    padding: 0.3rem 0;
+  }
+  tbody tr td:nth-of-type(2) {
+    text-transform: capitalize;
+  }
+  tbody tr td:last-of-type {
+    text-transform: uppercase;
+  }
+  .edit-btn {
+    border: none;
+    background-color: rgb(255, 230, 0);
+    padding: 0.2rem;
+    font-size: 1.2rem;
+  }
+}
+
+@scope (.shift) {
+  form {
+    /* border: 1px solid #ccc; */
+    width: 95%;
+    padding: 1rem 0;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem 0;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    /* padding: 0.4rem;         */
+    grid-column: span 5;
+  }
+  form div {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+  }
+  label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 25%;
+    text-align: end;
+    white-space: nowrap;
+  }
+  form > div > input,
+  select {
+    padding: 0.3rem 0.5rem;
+    width: 60%;
+    margin: 0.3rem;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 0.2);
+  }
+  select,
+  option {
+    text-transform: capitalize;
+  }
+  form > button {
+    grid-column: span 4;
+    width: 25%;
+    margin: 0 auto;
+    padding: 0.3rem 0;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: royalblue;
+    color: #fff;
+  }
+  .details {
+    grid-column: span 5;
+    height: max-content;
+  }
+  .details table {
+    width: 95%;
+    margin: 0 auto;
+  }
+  table thead tr th {
+    background-color: #befbff;
+    padding: 0.3rem 0;
+  }
+  table tbody tr td {
+    padding: 0.5rem;
+  }
+  table tbody tr td button {
+    background-color: crimson;
+    color: #fff;
+    width: 100%;
+    border: none;
+  }
+  table tbody tr td input {
+    width: 90%;
+    border: none;
+    padding: 0.4rem;
+    background-color: transparent;
+    display: block;
+    margin: 0 auto;
+    outline: none;
+  }
+  table tfoot {
+    border-right: none;
+  }
+  table tfoot button {
+    background-color: transparent;
+    color: royalblue;
+    border: none;
+    font-weight: 500;
+    display: block;
+    margin: 0 auto;
+    padding: 0.4rem 0;
+  }
+}
+@scope (.shifts) {
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  form {
+    width: max-content;
+    /* margin: 0 auto; */
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+  input,
+  select {
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 0.2);
+  }
+  form button {
+    padding: 0.5rem 1.5rem;
+    color: #fff;
+    background-color: royalblue;
+    border: none;
+    border-radius: 8px;
+  }
+  table{
+    width: 70%;
+    margin: 0.5rem auto;
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 15px rgb(0 0 0 / 0.25);
+  }
+  th{
+    background-color: #3d3d3d;
+    color: #fff;
+    border: none;
+    padding: 0.3rem;
+  }
+  td{
+    color: #888;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0.3rem;
+  }
+}
+
+@scope (.tank-stock) {
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #333;
+  }
+  form {
+    border-radius: 8px;
+    width: 50%;
+    margin-top: 1rem;
+    padding: 1rem 0.5rem;
+    display: grid;
+    gap: 1rem 0.5rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  form h3 {
+    grid-column: span 4;
+
+    color: #555;
+  }
+  form input,
+  form select {
+    grid-column: span 2;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 0.2);
+    border-radius: 5px;
+  }
+  form button {
+    grid-column: span 4;
+    width: 20%;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.7rem 0;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #007fff;
+    color: #fff;
+    transition: all ease-in-out 0.2s;
+  }
+  form button:hover {
+    background-color: #008080;
+    box-shadow: 0 0 0px 5px #00808080;
+  }
+  table {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  thead tr th {
+    background-color: #3d3d3d;
+    color: #f7f7f7;
+    padding: 0.5rem 0;
+  }
+  tbody tr td {
+    color: #333;
+    padding: 0.3rem;
+  }
+  tbody tr td:last-of-type {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+
+@scope (.refill) {
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .rmv-btn {
+    background-color: crimson;
+    border: none;
+    color: #fff;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all ease-in-out 0.2s;
+  }
+  .rmv-btn:hover {
+    box-shadow: 0 0 0 7px rgba(220, 20, 60, 0.4);
+  }
+  .add-btn {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 500;
+    color: royalblue;
+    transition: all ease-in-out 0.2s;
+  }
+  .add-btn:hover {
+    border-bottom: 3px solid;
+  }
+  input,
+  select {
+    padding: 0.3rem 0.5rem;
+    margin: 0.5rem;
+    border: 2px solid transparent;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 0.1);
+  }
+  button[type="submit"] {
+    padding: 0.3rem;
+    margin: 0.5rem 1rem;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #007fff;
+    color: #fff;
+    transition: all ease-in-out 0.2s;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  button[type="submit"]:hover {
+    background-color: royalblue;
+    box-shadow: 0 0 0 5px #ddd;
+  }
+}
+@scope (.sales-entry) {
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  form {
+    border-radius: 8px;
+    margin: 0.3rem;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0 0.5rem;
+  }
+  label {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  input{
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  button {
+    background-color: royalblue;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+}
+
+@scope (.expenses) {
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  form {
+    padding-left: 2rem;
+    /* border: 1px solid ; */
+    margin: 0.5rem auto;
+  }
+  h3,
+  h4 {
+    text-transform: uppercase;
+  }
+  input,
+  select {
+    padding: 0.3rem 1rem;
+    margin: 0.3rem 0.7rem;
+    border: 1px solid #ccc;
+  }
+  .add-btn,
+  .rmv-btn,
+  button[type="submit"] {
+    border: none;
+    color: white;
+    font-weight: 500;
+    background-color: transparent;
+  }
+  .add-btn {
+    background-color: transparent;
+    color: #007fff;
+    padding: 0.3rem 1rem;
+  }
+  .rmv-btn {
+    color: crimson;
+    font-size: 2rem;
+    vertical-align: middle;
+  }
+  button[type="submit"] {
+    background-color: royalblue;
+    padding: 0.5rem 0.7rem;
+    font-size: 1.1rem;
+    margin: 0.5rem auto;
+    display: block;
+    border-radius: 8px;
+  }
+}
+
+@scope (.credit) {
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  h3{
+    padding: 0.5rem;
+    padding-left: 2rem;
+  }
+  form {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 0.5rem 0;
+  }
+  label {
+    grid-column:span 1;
+    padding-left: 2rem;
+}
+label::after{
+    content: ":";
+    padding-left: 0.2rem;
+}
+input {
+    grid-column: span 2;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+  }
+  button[type=submit]{
+    margin:  0 auto;
+    width: 20%;
+    grid-column: span 3;
+    color: #fff;
+    background-color: #007fff;
+    border: none;
+    padding: 0.5rem ;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  table{
+    width: 90%;
+    margin: 0 auto;
+  }
+  tr th{
+    background-color: #3d3d3d;
+    color: #fff;
+    padding: 0.3rem;
+  }
+  tr td{
+    color:#888;
+    padding: 0.3rem;
+  }
+}

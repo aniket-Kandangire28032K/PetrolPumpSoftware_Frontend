@@ -1,0 +1,128 @@
+
+.customer form{
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #d3d3d3;
+    width: 60%;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    animation: popup 0.3s ease-in-out;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem 1.5rem;
+
+}
+
+
+.customer form label{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.customer form input{
+    background-color: transparent;
+    outline: none;
+    width: 90%;
+    font-size: 1.1rem;
+    border: 1px solid #ccc;
+    padding: .5rem;
+    margin-left: .7rem;
+}
+.customer form button[type='submit']{
+    padding: .5rem 1.5rem;
+    width: fit-content;
+    background-color: #0a72a6;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all ease-in-out 0.5s;
+    box-shadow: 0 0 5px #0a72a6;
+    border-radius: .2rem;
+}
+.customer form button[type='submit']:hover{
+    transform: scale(1.1);
+    background-color: #075378;
+    box-shadow: 0 0 10px #075378;
+}
+.customer-list{
+    padding:0 1rem;
+    /* margin-top: 1rem; */
+    animation: popup 0.2s ease-in-out;
+}
+.customer-list h3{
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+.customer-list table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.customer-list table thead{
+    background-color: #1f1f1f;
+    color: white;
+    
+}
+.customer-list table thead tr th{
+    border: none;
+}
+.customer-list table thead tr th,.customer-list table tbody tr td{
+    padding: 0.3rem 0.5rem;
+}
+.customer-list table tbody tr td:last-of-type{
+    display: flex;
+    gap: .5rem;
+    color: white;
+    border: none;
+}
+.customer-list table tbody tr td button{
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    padding: .3rem;
+    flex: 1;
+}
+.customer-list table tbody tr td button:nth-of-type(1){
+    background-color: #006fff;
+}
+.customer-list table tbody tr td button:nth-of-type(2){
+    background-color: crimson;
+}
+
+@scope (.expenses-table){
+    h3{
+        text-align: center;
+    }
+    input{
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 4px rgb(0 0 0 / 0.2);
+
+    }
+    
+    table{
+        width: 90%;
+        margin: 0.6rem auto;
+        
+    }
+    th {
+        background-color: #2c2a2a;
+        color:#fff;
+        padding: 0.5rem;
+        border: none;
+    }
+    tr td{
+        padding: 0.3rem;
+        color:#333;
+        text-transform: capitalize;
+        text-align: center;
+    }
+    tr td:nth-last-of-type(3){
+        text-transform: uppercase;
+    }
+}
+@scope(.chart){
+    width: 50%;
+    display: inline-block;
+}

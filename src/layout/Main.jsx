@@ -1,14 +1,14 @@
 import { Routes,Route } from "react-router-dom"
 import { lazy } from "react"
 import { useSelector } from "react-redux"
-import Dashboard from "../pages/Dashboard"
-import Sales from "../pages/Sales"
-import Error from "./Error"
+
 import LoginPage from '../pages/LoginPage.jsx'
-import Customer from "../pages/Customer.jsx"
-import AccessPage from "../pages/AccessPage.jsx"
-import Supplier from "../pages/Supplier.jsx"
-import ManagaeSuppliers from "../pages/ManagaeSuppliers.jsx"
+const Error = lazy(()=> import("./Error.jsx"))
+const Customer = lazy(()=> import("../pages/Customer.jsx"))
+const AccessPage = lazy(()=> import("../pages/AccessPage.jsx") )
+const Supplier = lazy(()=> import("../pages/Supplier.jsx"))
+const  ManagaeSuppliers = lazy(()=> import("../pages/ManagaeSuppliers.jsx"))
+const Sales = lazy(()=> import("../pages/Sales.jsx"))
 const AddFuel = lazy(()=> import('../pages/FuelAdd.jsx'));
 const ManageFuel = lazy(()=> import('../pages/ManageFuel.jsx'))
 const TankerEntry = lazy(()=> import("../pages/TankerEntry.jsx"))
@@ -21,11 +21,11 @@ const TankStock = lazy(()=> import("../pages/TankStock.jsx"))
 const Expense = lazy(()=> import("../pages/ExpencessManagement.jsx"))
 const CustomerCredits = lazy(()=> import('../pages/CustomerCredit.jsx'))
 const CAreport = lazy(()=> import('../pages/CAReportPage.jsx'))
-
+const Dashboard = lazy(()=> import("../pages/Dashboard.jsx"))
  
 const Main = () => {
   const role = useSelector(state => state.user.role)
-  console.log(role)
+  
   return (
     <div>
       <Routes>

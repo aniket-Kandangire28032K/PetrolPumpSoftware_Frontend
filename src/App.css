@@ -101,10 +101,9 @@
 .login-page form .login-btn:active {
   background-color: #005c5c;
 }
-@media (orientation: portrait){
+@media (max-with:750px){
   .login-page form{
     width: 100%;
-    
     background-image: url('../src/assets/img/fuel_station_1.jpg');
     background-position: center;
   }

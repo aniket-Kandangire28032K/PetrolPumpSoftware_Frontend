@@ -16,6 +16,32 @@ const ManageInvoices = () => {
   useEffect(()=>{
     getInvoice();
   },[])
+  const printInvoice = (item)=>{
+    const invoice = `<html>
+    <title>Invoice</title>
+    <style>
+    p{
+    padding-left:2rem;
+    font-weight:500;
+    }
+    @media print{
+      .print-btn{
+      display:none;
+      }
+    }
+    </style>
+    <body>
+      <p>Date${item.date}</p>
+      <p>Company Name:${item.companyname}</p>
+      <p>Invoice No:${item.invoiceno}</p>
+      <button class="print-btn" onclick="window.print()">Print</button>
+    </body>
+    </html>`;
+
+    const newTab = window.open("","_blank")
+    newTab.document.write(invoice);
+    newTab.document.close();
+  }
   return (
     <div className='manage-invoice'>
       <h2>Manage Invoices</h2>
@@ -66,7 +92,7 @@ const ManageInvoices = () => {
                     </tbody>
                   </table>
                 </td>
-                <td>{invoice.finaltotal}</td>
+                <td>{invoice.finaltotal}<button onClick={()=>printInvoice(invoice)} type='button'>Print</button></td>
               </tr>
             ))
           }

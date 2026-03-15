@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 const ShiftCard = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
@@ -12,6 +12,7 @@ const ShiftCard = () => {
     nozels: [{}],
     total:0
   });
+  const [fuel,setFuel] = useState([]);
   const getStaff = async () => {
     try {
       const res = await axios.get(`${URL}/api/staff`);
@@ -28,7 +29,7 @@ const ShiftCard = () => {
       nozels: [
         ...shiftDetails.nozels,
         {
-          pumpcode: "",
+          fuel: "",
           opening: "",
           closing: "",
           sale: "",
@@ -38,8 +39,7 @@ const ShiftCard = () => {
       ],
     });
   };
-  const deleteNozel = (index, e) => {
-    // e.preventDefault()
+  const deleteNozel = (index) => {
     setShiftDetails((prev) => ({
       ...prev,
       nozels: prev.nozels.filter((_, i) => i !== index),
@@ -47,15 +47,12 @@ const ShiftCard = () => {
   };
   const handleNozelChange = (index, field, value) => {
     const updatedNozels = [...shiftDetails.nozels];
-
     updatedNozels[index][field] = value;
-
     // auto calculate sale
     if (field === "opening" || field === "closing") {
       updatedNozels[index].sale =
         (updatedNozels[index].closing || 0) -
         (updatedNozels[index].opening || 0);
-      
     }
     if(field === "rate"){
       updatedNozels[index].salerate = Number(updatedNozels[index].sale) * Number(updatedNozels[index].rate)
@@ -74,6 +71,16 @@ const ShiftCard = () => {
     }))
   },[shiftDetails.nozels])
 
+  const getFuel = async()=>{
+    // get fuel Details
+    try {
+    const res = await axios.get(`${URL}/api/fuel`);
+    setFuel(res.data.fuelData)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -87,6 +94,7 @@ const ShiftCard = () => {
   }
   useEffect(() => {
     getStaff();
+    getFuel();
   }, []);
   return (
     <div className="shift">
@@ -148,7 +156,7 @@ const ShiftCard = () => {
             <thead>
               <tr>
                 <th>del</th>
-                <th>pump code</th>
+                <th>fuel</th>
                 <th>opening</th>
                 <th>closing</th>
                 <th>sale</th>
@@ -165,12 +173,16 @@ const ShiftCard = () => {
                     </button>
                   </td>
                   <td>
-                    <input
-                      type="text" value={item.pumpcode}
-                      onChange={(e) =>
-                        handleNozelChange(index, "pumpcode", e.target.value)
+                    <select  value={item.fuel}  onChange={(e) =>
+                        handleNozelChange(index, "fuel", e.target.value)
+                      }>
+                      <option value="">Fuel</option>
+                      {
+                        fuel.map(e=>(
+                          <option key={e._id} value={e.name}>{e.name}</option>
+                        ))
                       }
-                    />
+                    </select>
                   </td>
                   <td>
                     <input type="number" value={item.opening}

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import "./component.css"
 
 const ExpensesDisplay = () => {
     const URL = import.meta.env.VITE_BACKEND_URL;

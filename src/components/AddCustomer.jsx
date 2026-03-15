@@ -7,7 +7,9 @@ const AddCustomer = () => {
     name:'',
     email:'',
     contact:'',
-    address:''
+    address:'',
+    credits:"",
+    creditslimit:""
   })
 
   const handleChange = (e) =>{
@@ -36,18 +38,26 @@ const AddCustomer = () => {
   }
   return (
     <div className="customer">
+      <h3>Enter Customer Details</h3>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label htmlFor="">Customer Name</label>
-        <input type="text" value={formData.name} onChange={e => handleChange(e)} name="name"  required/>
+        <input type="text" value={formData.name} onChange={handleChange} name="name"  required/>
 
         <label htmlFor="">Customer Email</label>
-        <input type="email" value={formData.email} onChange={e => handleChange(e)} name="email"/>
+        <input type="email" value={formData.email} onChange={handleChange} name="email"/>
 
         <label htmlFor="">Customer Contact</label>
-        <input type="text" value={formData.contact} onChange={e => handleChange(e)} name="contact" required/>
+        <input type="text" value={formData.contact} onChange={handleChange} name="contact" required/>
 
         <label htmlFor="">Customer Address</label>
-        <input type="text" value={formData.address} onChange={e => handleChange(e)} name="address" required/>
+        <input type="text" value={formData.address} onChange={handleChange} name="address" required/>
+        
+        <label htmlFor="">Credits</label>
+        <input type="number" min={0} value={formData.credits} onChange={handleChange} name="credits" required/>
+        
+        <label htmlFor="">Credits Limit</label>
+        <input type="number" min={0} value={formData.creditslimit} onChange={handleChange} name="creditslimit" required/>
+       
 
         <button type="submit">Sumbit</button>
       </form>

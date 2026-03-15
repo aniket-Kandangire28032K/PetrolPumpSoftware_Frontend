@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
         }
       </div>
-      <div className='dropdown'>
+      {/* <div className='dropdown'>
         <span onClick={()=>handleoption('tank')}><GiFuelTank className='option-icon'/>Tank{ open === 'tank' ? <FaChevronDown className='icon'/> : <FaChevronRight className='icon'/>}</span>
         { open == 'tank' && <div className='dropdown-option'>
           <NavLink to="/tank-stock">Tank Status</NavLink>
@@ -62,13 +62,13 @@ const Navbar = () => {
           
         </div>
         }
-      </div>
+      </div> */}
       
       <NavLink to="/sales" onClick={()=>handleoption(null)}><FaChartPie className='option-icon'/>Sales Report</NavLink>
       <NavLink to="/expense" onClick={()=>handleoption(null)}><GiExpense className='option-icon'/>Expense</NavLink>
       <NavLink to="/ca-report" onClick={()=>handleoption(null)}><GiExpense className='option-icon'/>CA Report</NavLink>
       <NavLink to="/customer" onClick={()=>handleoption(null)}><IoMdPerson className='option-icon'/>Customer</NavLink>
-      <NavLink to="/credits" onClick={()=>handleoption(null)}><IoMdPerson className='option-icon'/>Customer Credits</NavLink>
+      {/* <NavLink to="/credits" onClick={()=>handleoption(null)}><IoMdPerson className='option-icon'/>Customer Credits</NavLink> */}
       <NavLink to="/staff" onClick={()=>handleoption(null)}><BsFilePersonFill className='option-icon'/>Manage Staff</NavLink>
       <NavLink to="/access" onClick={()=>handleoption(null)}><RiAccountCircleFill className='option-icon'/>Access</NavLink>
     </div>

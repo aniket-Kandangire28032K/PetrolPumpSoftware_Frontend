@@ -122,7 +122,9 @@
         text-transform: uppercase;
     }
 }
-@scope(.chart){
+.chart{
     width: 50%;
     display: inline-block;
+}
+@scope(.chart){
 }

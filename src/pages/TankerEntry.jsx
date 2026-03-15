@@ -17,7 +17,7 @@ const TankerEntry = () => {
     transportercontact: "",
     remark: "",
     items: [{ itemname: "", qty: "", rate: "", total: ""}],
-    finaltotal: "",
+    finaltotal: 0,
   });
 
   const handleChange = (e) => {
@@ -50,19 +50,21 @@ const TankerEntry = () => {
         transportercontact: "",
         dlycharge: "",
         remark: "",
+        finaltotal: "",
         items: [
           {
             itemname: "",
             qty: "",
             rate: "",
             total: "",
-            
+            vat:""
           },
         ],
       });
     }
   };
   const addItem = () => {
+    
     setFormData({
       ...formData,
       items: [
@@ -73,7 +75,7 @@ const TankerEntry = () => {
           rate: "",
           dlycharge: "",
           total: "",
-          
+          vat:""
         },
       ],
     });
@@ -97,17 +99,25 @@ const TankerEntry = () => {
 
     updatedItems[index][field] = value;
 
-    if (field === "qty" || field === "rate") {
+    if (field === "qty" || field === "rate" || field === "vat") {
       updatedItems[index].total =
-        Number(updatedItems[index].qty || 0) *
-        Number(updatedItems[index].rate || 0);
+        (Number(updatedItems[index].qty || 0) *
+        Number(updatedItems[index].rate || 0)) + Number(updatedItems[index].vat || 0)
     }
-
+    
     setFormData({
       ...formData,
       items: updatedItems,
     });
   };
+
+  useEffect(()=>{
+    let total = formData.items.reduce((sum,item)=> sum+item.total,0)
+    setFormData({
+      ...formData,
+      finaltotal:total
+    })
+  },[])
   return (
     <div className="tanker-entry">
       <h1>Invoice Form</h1>
@@ -168,8 +178,9 @@ const TankerEntry = () => {
               <tr>
                 <th></th>
                 <th>Item name</th>
-                <th>qty</th>
+                <th>qty(l)</th>
                 <th>rate</th>
+                <th>VAT</th>
                 <th>total</th>
               </tr>
             </thead>
@@ -196,7 +207,7 @@ const TankerEntry = () => {
                   </td>
                   <td>
                     <input
-                      type="num"
+                      type="number"
                       value={item.qty}
                       min={0}
                       onChange={(e) => {
@@ -206,7 +217,7 @@ const TankerEntry = () => {
                   </td>
                   <td>
                     <input
-                      type="num"
+                      type="number"
                       value={item.rate}
                       min={0}
                       onChange={(e) => {
@@ -214,10 +225,20 @@ const TankerEntry = () => {
                       }}
                     />
                   </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={item.vat}
+                      min={0}
+                      onChange={(e) => {
+                        handleItemChange(index, "vat", e.target.value);
+                      }}
+                    />
+                  </td>
 
                   <td>
                     <input
-                      type="num"
+                      type="number"
                       value={item.total}
                       min={0}
                       onChange={(e) => {
@@ -239,6 +260,7 @@ const TankerEntry = () => {
             </tfoot>
           </table>
         </div>
+        <h3>Total: ₹ {formData.finaltotal}</h3>
         <div>
           <button type="submit">Submit</button>
           <button type="reset">Clear</button>

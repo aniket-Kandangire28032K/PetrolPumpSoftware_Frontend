@@ -101,14 +101,20 @@
 .login-page form .login-btn:active {
   background-color: #005c5c;
 }
-@media (max-with:750px){
+@media (max-width:750px){
   .login-page form{
     width: 100%;
     background-image: url('../src/assets/img/fuel_station_1.jpg');
     background-position: center;
+    justify-content: flex-start;
+    padding-top: 7rem;
   }
   .login-page form h1{
-    color: #000;
+  font-size: 60px;
+  font-weight: bold;
+  color: transparent;                
+  color: teal;
+  width: 100%;
   }
   .login-page form div{
     width: 80%;
@@ -479,7 +485,7 @@
     text-transform: uppercase;
     color: #008080;
   }
-  form input,form select{
+  form > input,form > select{
     width: 60%;
     font-size: 1.1rem;
     align-self: center;
@@ -488,6 +494,13 @@
     margin: 0.5rem;
     box-shadow: 2px 2px 5px rgb(0 0 0 / 0.2);
     border-radius: 6px;
+  }
+  form > button{
+    width: 5%;
+    font-size: 1.2rem;
+    border: none;
+    background-color: transparent;
+    align-self: center;
   }
   form input::placeholder{
     color: #aaa;
@@ -514,6 +527,37 @@
   }
   .btn-grp button:last-of-type{
     background-color: crimson;
+  }
+  .updateaccess-form div{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .updateaccess-form div label{
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .updateaccess-form div input,.updateaccess-form div select{
+    padding: 0.5rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border:1px solid #ccc;
+  }
+  .updateaccess-form div:nth-of-type(5) button{
+    min-width:  10%;
+    border-radius: 8px;
+    background-color: #3d3d3d;
+    color: #fff;
+    border: none;
+    margin-top: 0.2rem;
+    font-size: 1.5rem;
+    align-self: flex-end;
+    
+  }
+  .updateaccess-form .btn-grp{
+    flex-direction: row !important;
   }
 }
 .access .user-list {
@@ -884,6 +928,71 @@
   tr td {
     border: 1px solid #ccc;
   }
+  .fuelupdateform{
+    width: 100%;
+    min-height: 95dvh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000000dd;
+    display: grid;
+    place-items: center;
+  }
+  .fuelupdateform form{
+    width: 40%;
+    padding: 1rem;
+    height: max-content;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .fuelupdateform form h2{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+
+  }
+  .fuelupdateform form div{
+    width: 90%;
+    margin: 0 auto;
+    /* border: 1px solid; */
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .fuelupdateform form div:last-of-type{
+    justify-content: center;
+    gap: 2rem;
+  }
+  .fuelupdateform form div label{
+    font-weight: 700;
+  }
+  .fuelupdateform form div input,.fuelupdateform form div select{
+    padding: 0.3rem 0.5rem;
+    text-transform: capitalize;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  .fuelupdateform form div button{
+    padding: 0.2rem 1.5rem;
+    font-size: 1.1rem;
+    width: 25%;
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+  }
+  .fuelupdateform form div button:first-of-type{
+    background-color: #0080ff;
+  }
+  .fuelupdateform form div button:last-of-type{
+    background-color: crimson;
+
+  }
 }
 .manage-fuel table thead tr th {
   background-color: royalblue;
@@ -1059,24 +1168,26 @@
     white-space: nowrap;
   }
   form > div > input,
-  select {
+  form > div >select {
     padding: 0.3rem 0.5rem;
     width: 60%;
     margin: 0.3rem;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgb(0 0 0 / 0.2);
+    border-radius: 6px;
+    font-size: 1.1rem;
   }
   select,
   option {
     text-transform: capitalize;
   }
   form > button {
-    grid-column: span 4;
+    grid-column: span 2/4;
     width: 25%;
     margin: 0 auto;
     padding: 0.3rem 0;
     font-size: 1.2rem;
-    border-radius: 8px;
+    border-radius: 6px;
     border: none;
     font-weight: 500;
     text-transform: uppercase;
@@ -1092,7 +1203,9 @@
     margin: 0 auto;
   }
   table thead tr th {
-    background-color: #befbff;
+    background-color: #3d3d3d;
+    color: #fff;
+    border: none;
     padding: 0.3rem 0;
   }
   table tbody tr td {

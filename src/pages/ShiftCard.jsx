@@ -96,6 +96,9 @@ const ShiftCard = () => {
     getStaff();
     getFuel();
   }, []);
+  // useEffect(()=>{
+  //   console.log(shiftDetails.nozels)
+  // },[shiftDetails.nozels])
   return (
     <div className="shift">
       <form onSubmit={handleSubmit}>

@@ -11,6 +11,7 @@ import { RiAccountCircleFill } from "react-icons/ri";
 import { IoMdPerson } from "react-icons/io";
 import { FaChartPie } from "react-icons/fa6";
 import { GiExpense } from "react-icons/gi";
+import { MdLogout } from "react-icons/md";
 const Navbar = () => {
   const [open,setopen] = useState();
 
@@ -71,6 +72,7 @@ const Navbar = () => {
       {/* <NavLink to="/credits" onClick={()=>handleoption(null)}><IoMdPerson className='option-icon'/>Customer Credits</NavLink> */}
       <NavLink to="/staff" onClick={()=>handleoption(null)}><BsFilePersonFill className='option-icon'/>Manage Staff</NavLink>
       <NavLink to="/access" onClick={()=>handleoption(null)}><RiAccountCircleFill className='option-icon'/>Access</NavLink>
+      <button className='logout-btn'><MdLogout className='icon' />Logout</button>
     </div>
     </>
   )

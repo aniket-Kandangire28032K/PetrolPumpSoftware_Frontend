@@ -91,7 +91,7 @@ const FuelAdd = () => {
         <div>
           <label>Tank:</label>
           <select name="tank"  value={postData.tank} onChange={(e) => handleChange(e)} required>
-              <option value="tank 1">--Select-Tank--</option>
+              <option value="">--Select-Tank--</option>
               <option value="tank 1">Tank 1</option>
               <option value="tank 2">Tank 2</option>
               <option value="tank 3">Tank 3</option>

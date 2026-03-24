@@ -14,7 +14,6 @@ const Shifts = () => {
       const res = await axios.get(`${URL}/api/shift`)
       setShiftDetails(res.data.shiftData)
       setFilteredData(res.data.shiftData)
-      console.log(res.data.shiftData)
     } catch (error) {
       console.log(error)
     }

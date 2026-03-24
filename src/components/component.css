@@ -123,8 +123,8 @@
     }
 }
 .chart{
-    width: 50%;
-    display: inline-block;
-}
-@scope(.chart){
+    width: 100% !important;
+    min-height: 25dvh;
+    border: 1px solid #cccccc80;
+    border-radius: 6px;
 }

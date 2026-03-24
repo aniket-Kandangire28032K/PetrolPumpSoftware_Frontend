@@ -1,31 +1,57 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useGet } from "../Hooks/useGet.jsx";
+import useGetShift from "../Hooks/useGetShift.jsx";
+import axios from "axios";
 const CAReportPage = () => {
-  // Mock data
-  const [sales, setSales] = useState([
-    { fuelType: "Petrol", quantity: 10000, rate: 96 },
-    { fuelType: "Diesel", quantity: 8000, rate: 88 }
-  ]);
+  const URL = import.meta.env.VITE_BACKEND_URL;
+  const date = new Date();
+  const month = String(date.getMonth() + 1).padStart(2, 0);
+  const filterDate = `${date.getFullYear()}-${month}`;
+  const { shiftData, getShiftData } = useGetShift();
+  const [expenses, setExpenses] = useState([]);
+  const [totalValues, setTotalValues] = useState({
+    totalSales: 0,
+    totalExpenses: 0,
+    totalCredits: 0,
+  });
+  const [sales, setSales] = useState([]);
+  let filterData = [];
 
-  const [expenses, setExpenses] = useState([
-    { category: "Electricity", amount: 12000 },
-    { category: "Staff Salary", amount: 50000 },
-    { category: "Maintenance", amount: 15000 }
-  ]);
-
-  const [creditCustomers, setCreditCustomers] = useState([
-    { name: "Rajesh", outstanding: 20000 },
-    { name: "Suresh", outstanding: 15000 }
-  ]);
+  const getExpenses = async () => {
+    try {
+      const res = await axios.get(`${URL}/api/expenses`);
+      let filterExpenses= res.data.expenses.filter((item) => (String(item.date).includes(filterData)))
+      const expens = filterExpenses.reduce((acc,item)=>{
+        if(!acc[item.category]){
+          acc[item.category] = 0
+        }
+         acc[item.category] += item.amount
+        return acc
+      },{})
+      const totalexpenses = Object.values(expens).reduce((sum,val)=> sum + val,0)
+      setExpenses(expens);
+      setTotalValues({...totalValues,totalExpenses:totalexpenses})
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // Calculate totals
-  const totalSales = sales.reduce((sum, s) => sum + s.quantity * s.rate, 0);
-  const totalExpenses = expenses.reduce((sum, e) => sum + Number(e.amount), 0);
-  const totalOutstanding = creditCustomers.reduce((sum, c) => sum + Number(c.outstanding), 0);
-  const netProfit = totalSales - totalExpenses - totalOutstanding;
-
+  // const totalExpenses = expenses.reduce((sum, e) => sum + Number(e.amount), 0);
+  useEffect(() => {
+    if (!shiftData) return;
+    filterData = shiftData.filter((e) => e.date.includes(filterDate));
+    const SaleTotal = filterData.reduce((sum, s) => sum + s.total, 0);
+    setTotalValues((prev) => ({ ...prev, totalSales: SaleTotal }));
+    // const totalOutstanding = creditCustomers.reduce((sum, c) => sum + Number(c.outstanding), 0);
+    // const netProfit = totalSales - totalExpenses - totalOutstanding;
+  }, [shiftData]);
+  
+  useEffect(() => {
+    getExpenses();
+  }, []);
   return (
-    <div style={{ maxWidth: "900px", margin: "auto" }}>
+    <div className="ca-report">
       <h2>CA Financial Report</h2>
 
       {/* Sales Summary */}
@@ -33,24 +59,30 @@ const CAReportPage = () => {
       <table border="1" cellPadding="10" width="100%">
         <thead>
           <tr>
+            <th>Date</th>
             <th>Fuel Type</th>
             <th>Quantity (L)</th>
             <th>Rate (₹/L)</th>
             <th>Total (₹)</th>
           </tr>
         </thead>
-        <tbody>
-          {sales.map((s, idx) => (
-            <tr key={idx}>
-              <td>{s.fuelType}</td>
-              <td>{s.quantity}</td>
-              <td>{s.rate}</td>
-              <td>{s.quantity * s.rate}</td>
-            </tr>
-          ))}
+        <tbody style={{ textAlign: "center" }}>
+          {shiftData.map((e) =>
+            e.nozels.map((data, num) => (
+              <tr key={num}>
+                <td>{e.date}</td>
+                <td style={{ textTransform: "capitalize" }}>{data.fuel}</td>
+                <td>{data.sale}</td>
+                <td>{data.rate}</td>
+                <td>{data.salerate}</td>
+              </tr>
+            )),
+          )}
           <tr>
-            <td colSpan="3" style={{ textAlign: "right", fontWeight: "bold" }}>Total Sales</td>
-            <td style={{ fontWeight: "bold" }}>{totalSales}</td>
+            <td colSpan="4" style={{ textAlign: "right", fontWeight: "bold" }}>
+              Total Sales
+            </td>
+            <td style={{ fontWeight: "bold" }}>{totalValues.totalSales}</td>
           </tr>
         </tbody>
       </table>
@@ -67,51 +99,29 @@ const CAReportPage = () => {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((e, idx) => (
-            <tr key={idx}>
-              <td>{e.category}</td>
-              <td>{e.amount}</td>
-            </tr>
-          ))}
+          {
+            Object.entries(expenses).map(([category,amount]) =>(
+              <tr key={category}>
+                <td style={{ textTransform: "capitalize" }}>{category}</td>
+                <td>{amount}</td>
+              </tr>
+            ))
+          }
           <tr>
-            <td style={{ textAlign: "right", fontWeight: "bold" }}>Total Expenses</td>
-            <td style={{ fontWeight: "bold" }}>{totalExpenses}</td>
+            <td style={{ textAlign: "right", fontWeight: "bold" }}>
+              Total Expenses
+            </td>
+            <td style={{ fontWeight: "bold" }}>{totalValues.totalExpenses}</td>
           </tr>
         </tbody>
       </table>
-
-      <br />
-
-      {/* Credit Customer Summary */}
-      <h3>Credit Customers Outstanding</h3>
-      <table border="1" cellPadding="10" width="100%">
-        <thead>
-          <tr>
-            <th>Customer Name</th>
-            <th>Outstanding (₹)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {creditCustomers.map((c, idx) => (
-            <tr key={idx}>
-              <td>{c.name}</td>
-              <td>{c.outstanding}</td>
-            </tr>
-          ))}
-          <tr>
-            <td style={{ textAlign: "right", fontWeight: "bold" }}>Total Outstanding</td>
-            <td style={{ fontWeight: "bold" }}>{totalOutstanding}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <br />
 
       {/* Net Profit */}
-      <h3>Net Profit / Loss</h3>
+      {/* <h3>Net Profit / Loss</h3>
       <div style={{ fontSize: "18px", fontWeight: "bold" }}>
         ₹ {netProfit >= 0 ? netProfit : `-${Math.abs(netProfit)}`} ({netProfit >= 0 ? "Profit" : "Loss"})
-      </div>
+      </div> */}
+      
     </div>
   );
 };

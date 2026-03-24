@@ -92,7 +92,8 @@ const ManageInvoices = () => {
                     </tbody>
                   </table>
                 </td>
-                <td>{invoice.finaltotal}<button onClick={()=>printInvoice(invoice)} type='button'>Print</button></td>
+                <td>{invoice.finaltotal}</td>
+                {/* <td>{invoice.finaltotal}<button onClick={()=>printInvoice(invoice)} type='button'>Print</button></td> */}
               </tr>
             ))
           }

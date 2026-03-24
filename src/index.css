@@ -135,6 +135,7 @@ nav div span .icon{
     color: red;
     animation: blink infinite linear 2s;
 }
+
 @keyframes blink {
     0%{
         opacity: 0;
@@ -177,6 +178,19 @@ main{
 .hide + main{
 margin-left:0 ;
 width: 100dvw;    
+}
+@media print {
+    .top-bar,nav,form,button{
+        display: none !important;
+    }
+    main{
+      margin-left: 0;  
+      width: 100%;
+    }
+    tr,td,th{
+        border-color: #000;
+    }
+
 }
 .page{
     min-height: 92dvh;

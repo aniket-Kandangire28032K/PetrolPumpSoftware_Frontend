@@ -29,6 +29,7 @@ const ShiftCard = () => {
       nozels: [
         ...shiftDetails.nozels,
         {
+          nozel:"",
           fuel: "",
           opening: "",
           closing: "",
@@ -85,7 +86,6 @@ const ShiftCard = () => {
     e.preventDefault();
     try {
       const res = await axios.post(`${URL}/api/shift`,shiftDetails)
-      console.log(res.data)
       Swal.fire("","Data Saced","success")
     } catch (error) {
       console.log(error)
@@ -159,6 +159,7 @@ const ShiftCard = () => {
             <thead>
               <tr>
                 <th>del</th>
+                <th>Nozel</th>
                 <th>fuel</th>
                 <th>opening</th>
                 <th>closing</th>
@@ -174,6 +175,9 @@ const ShiftCard = () => {
                     <button type="button" onClick={() => deleteNozel(index)}>
                       X
                     </button>
+                  </td>
+                  <td>
+                    <input type="text" onChange={(e) => handleNozelChange(index, "fuel", e.target.value)} />
                   </td>
                   <td>
                     <select  value={item.fuel}  onChange={(e) =>

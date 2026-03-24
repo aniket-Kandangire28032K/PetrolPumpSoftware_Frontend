@@ -5,7 +5,9 @@ import Swal from "sweetalert2";
 
 const TankerEntry = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
+  const today = new Date().toISOString().split("T")[0]
   const [formData, setFormData] = useState({
+    date:today,
     companyname: "",
     invoiceno: "",
     invoicedate: "",

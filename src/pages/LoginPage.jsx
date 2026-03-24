@@ -6,7 +6,7 @@ import { login } from "../app/userSlice.js";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const LoginPage = () => {
+const LoginPage = ({onLogin}) => {
   const URL = import.meta.env.VITE_BACKEND_URL;
   const [showPassword, setShowPassword] = useState(false);
   const [user,setUser] = useState({
@@ -15,13 +15,20 @@ const LoginPage = () => {
   })
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  
   const handleSubmit = async(e) =>{
     e.preventDefault();
+    const expiryTime = new Date().getTime() + 60 * 60 * 1000;
     try {
       const res = await axios.post(`${URL}/api/user/login`,user)
       console.log(res.data.user)
       dispatch(login({name:res.data.user.name,role:res.data.user.role}))
-      navigate("/home",{replace:true})
+      localStorage.setItem("auth",JSON.stringify({
+        value:true,
+        expiry:expiryTime
+      }));
+      onLogin();
+      navigate("/",{replace:true})
     } catch (error) {
       console.log(error)
       console.log(error.response.data.message)

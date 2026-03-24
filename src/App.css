@@ -1723,3 +1723,128 @@ input {
     text-align: center;
   }
 }
+@scope (.request){
+  h2{
+    text-align: center;
+  }
+  form{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  form div{
+    width: 25%;
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  form div:last-of-type{
+    width: 100%;
+  }
+  form div label,form div button{
+    font-weight: 500;
+  }
+  form div input,form div select{
+    padding: 0.5rem;
+    width: 50%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  form div button{
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    width: 20%;
+    /* margin: 0.5rem auto; */
+
+  }
+  form div button:first-of-type{
+    background-color: #2661a1;
+  }
+  form div button:last-of-type{
+    background-color: rgb(255, 225, 54);
+    color: #000;
+
+  }
+  .expense-requests{
+    padding-left: 0.3rem;
+  }
+  .req-card{
+    width: 20%;
+    padding: 0.5rem 0 0 0;
+    border: none;
+    border-radius: 6px;
+    display: inline-block;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px rgb(0 0 0 / 0.2);
+    margin: 0.5rem;
+  }
+  .req-card h3{
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .req-card p{
+    padding: 0.3rem 0 0 0.7rem;
+  }
+  .req-card p:nth-of-type(2){
+    text-transform: capitalize;
+  }
+  .req-card p strong{
+    padding-right: 0.1rem;
+    color: #3d3d3d;
+  }
+  .req-card p span{
+    text-transform: uppercase;
+  }
+  .req-card button{
+    width: 50%;
+    margin-top: 0.2rem;
+    border: none;
+    padding: 0.3rem;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all ease-in-out 0.2s;
+  }
+  .req-card button:first-of-type{
+    background-color: teal;
+  }
+  .req-card button:first-of-type:hover{
+    background-color: rgb(0, 70, 70);
+  }
+  .req-card button:last-of-type{
+    background-color: crimson;
+  }
+  .req-card button:last-of-type:hover{
+    background-color: rgb(158, 13, 42);
+  }
+}
+
+@media (max-width:700px) {
+  @scope(.request){
+    form{
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    form div{
+      width: 70%;
+      margin: 0 auto;
+      flex-direction: column;
+      align-items: start;
+      gap: 0;
+    }
+    form div label{
+      margin-bottom: 0.5rem;
+    }
+    form div input ,form div select{
+      width: 95%;
+    }
+    form div button{
+      width: 50%;
+      margin: 0.5rem auto;
+    }
+  }
+}

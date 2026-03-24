@@ -18,15 +18,17 @@ const LoginPage = ({onLogin}) => {
   
   const handleSubmit = async(e) =>{
     e.preventDefault();
-    const expiryTime = new Date().getTime() + 60 * 60 * 1000;
+    // const expiryTime = new Date().getTime() + 60 * 60 * 1000;
     try {
       const res = await axios.post(`${URL}/api/user/login`,user)
-      console.log(res.data.user)
       dispatch(login({name:res.data.user.name,role:res.data.user.role}))
-      localStorage.setItem("auth",JSON.stringify({
-        value:true,
-        expiry:expiryTime
-      }));
+      localStorage.setItem("auth",
+      //   JSON.stringify({
+      //   value:true,
+        // expiry:expiryTime
+      // })
+      true
+    );
       onLogin();
       navigate("/",{replace:true})
     } catch (error) {

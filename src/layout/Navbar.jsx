@@ -62,6 +62,7 @@ const Navbar = ({onLogout}) => {
       <NavLink to="/lube" onClick={()=>handleoption(null)}><RiOilFill className='option-icon'/>Lube</NavLink>
       <NavLink to="/sales" onClick={()=>handleoption(null)}><FaChartPie className='option-icon'/>Sales Report</NavLink>
       <NavLink to="/expense" onClick={()=>handleoption(null)}><GiExpense className='option-icon'/>Expense</NavLink>
+      <NavLink to="/request-expense" onClick={()=>handleoption(null)}><GiExpense className='option-icon'/>Request Expenses</NavLink>
       <NavLink to="/ca-report" onClick={()=>handleoption(null)}><HiDocumentReport className='option-icon'/>CA Report</NavLink>
       <NavLink to="/customer" onClick={()=>handleoption(null)}><IoMdPerson className='option-icon'/>Customer</NavLink>
       <NavLink to="/staff" onClick={()=>handleoption(null)}><BsFilePersonFill className='option-icon'/>Manage Staff</NavLink>

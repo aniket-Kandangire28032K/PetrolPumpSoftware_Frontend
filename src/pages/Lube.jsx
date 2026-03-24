@@ -296,7 +296,8 @@ const printRecipt = (item) =>{
               <td>{item.gst}%</td>
               <td>{item.perAmount}</td>
               <td>{item.amount}</td>
-              <td style={{textTransform:"uppercase"}}>{item.paymentMode} <button onClick={()=> printRecipt(item)}>Print</button></td>
+              <td style={{textTransform:"uppercase"}}>{item.paymentMode}</td>
+              {/* <button onClick={()=> printRecipt(item)}>Print</button> */}
             </tr>)
           }
         </tbody>

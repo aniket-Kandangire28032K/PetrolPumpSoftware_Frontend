@@ -27,7 +27,6 @@ const Dashboard = () => {
   const getProducts = async () => {
     try {
       const res = await axios.get(`${Backendurl}/api/fuel`);
-      console.log(res.data.fuelData);
       setProducts(res.data.fuelData);
     } catch (error) {
       console.log(error);

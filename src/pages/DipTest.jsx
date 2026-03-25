@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import Swal from "sweetalert2";
+import PrintBtn from "../components/PrintBtn.jsx";
 const DipTest = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
   const [loading,setLoading] = useState(false)
@@ -271,6 +272,7 @@ const DipTest = () => {
           }
         </tbody>
       </table>
+      <PrintBtn/>
     </div>
   );
 };

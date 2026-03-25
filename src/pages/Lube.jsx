@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import PrintBtn from "../components/PrintBtn.jsx";
 
 const Lube = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
@@ -302,6 +303,7 @@ const printRecipt = (item) =>{
           }
         </tbody>
       </table>
+      <PrintBtn/>
     </div>
   );
 };

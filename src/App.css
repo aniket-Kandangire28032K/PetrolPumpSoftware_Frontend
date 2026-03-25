@@ -1770,6 +1770,7 @@ input {
   }
   .expense-requests{
     padding-left: 0.3rem;
+    display: flex;
   }
   .req-card{
     width: 20%;
@@ -1821,6 +1822,22 @@ input {
   .req-card button:last-of-type:hover{
     background-color: rgb(158, 13, 42);
   }
+  .requests-list h3{
+    padding: 0.3rem;
+  }
+  .requests-list table{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .requests-list table thead tr th{
+    background-color: #333;
+    color: #fff;
+    border: none;
+  }
+  .requests-list table tbody{
+    text-align: center;
+    text-transform: capitalize;
+  }
 }
 
 @media (max-width:700px) {
@@ -1845,6 +1862,21 @@ input {
     form div button{
       width: 50%;
       margin: 0.5rem auto;
+    }
+    .expense-requests{
+      padding: 0.3rem !important;
+      flex-direction: column;
+      display: none;
+    }
+    .req-card{
+      width: 90%;
+
+    }
+    .requests-list{
+      overflow-x: auto;
+    }
+    tr th{
+      padding: 0 0.5rem;
     }
   }
 }

@@ -255,3 +255,13 @@ input:focus, select:focus{
     left: unset;
   }
 }
+
+@media (max-width:850px) {
+    main{
+        margin-left: 0;
+        width: 100%;
+    }
+    .top-bar,nav{
+        display: none;
+    }
+}

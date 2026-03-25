@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useGet } from "../Hooks/useGet.jsx";
 import useGetShift from "../Hooks/useGetShift.jsx";
 import axios from "axios";
+import PrintBtn from "../components/PrintBtn.jsx";
 const CAReportPage = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
   const date = new Date();
@@ -116,12 +117,7 @@ const CAReportPage = () => {
         </tbody>
       </table>
 
-      {/* Net Profit */}
-      {/* <h3>Net Profit / Loss</h3>
-      <div style={{ fontSize: "18px", fontWeight: "bold" }}>
-        ₹ {netProfit >= 0 ? netProfit : `-${Math.abs(netProfit)}`} ({netProfit >= 0 ? "Profit" : "Loss"})
-      </div> */}
-      
+          <PrintBtn/>
     </div>
   );
 };

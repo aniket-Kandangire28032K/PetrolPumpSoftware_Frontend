@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import Swal from "sweetalert2";
 import ExpensesDisplay from "../components/ExpensesDisplay.jsx";
-
+import PrintBtn from '../components/PrintBtn.jsx'
 
 const ExpenseManagement = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
@@ -127,6 +127,7 @@ const ExpenseManagement = () => {
         <button type="submit">Save All Expenses</button>
       </form>
       <ExpensesDisplay/>  
+      <PrintBtn/>
     </div>
   );
 };

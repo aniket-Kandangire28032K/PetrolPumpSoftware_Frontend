@@ -8,9 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "electron": "electron .",
-    "electron:build": "npm run build && electron-builder"
+    "preview": "vite preview"
   },
   "build": {
     "appId": "CraftstackDevelpoers.worldapp",

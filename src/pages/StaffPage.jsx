@@ -133,7 +133,7 @@ const StaffPage = () => {
           </tr>
         </thead>
         <tbody>
-          {staff.length>0 ? staff.map((item, num) => (
+          {staff?.length > 0 ? staff.map((item, num) => (
             <tr key={item._id}>
               <td>{num + 1}</td>
               <td>{item.name}</td>

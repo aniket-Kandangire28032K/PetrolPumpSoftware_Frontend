@@ -126,7 +126,7 @@ const TankStock = () => {
         </thead>
 
         <tbody>
-          {tanks.map((tank, num) => {
+          {tanks?.map((tank, num) => {
             const status = getStockStatus(
               tank.tankcurrentstock,
               tank.tankcapacity,

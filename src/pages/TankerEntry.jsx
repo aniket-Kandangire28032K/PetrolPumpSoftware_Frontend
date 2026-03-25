@@ -187,7 +187,7 @@ const TankerEntry = () => {
               </tr>
             </thead>
             <tbody>
-              {formData.items.map((item, index) => (
+              {formData?.items.map((item, index) => (
                 <tr key={index}>
                   <td>
                     <button

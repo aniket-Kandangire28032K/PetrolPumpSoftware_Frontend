@@ -17,6 +17,12 @@ body{
     overflow-y: scroll;
     
 }
+@media print {
+    body{
+        background-color: #fff;
+
+    }
+}
 body::-webkit-scrollbar{
     display: none;
 }
@@ -206,6 +212,15 @@ table{
 }
 table > thead > tr > th{
     text-transform: uppercase;
+}
+@media print {
+    table > thead > tr > th{
+        border: 1px solid #111 !important;
+    }
+}
+table > tbody {
+    text-transform: capitalize;
+
 }
 input[type=date]{
     text-transform: uppercase;

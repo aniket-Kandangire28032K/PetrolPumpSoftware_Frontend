@@ -45,7 +45,7 @@ const Supplier = () => {
           <label>Company Name</label>
           <input
             type="text"
-            name="name"
+            name="companyname"
             onChange={handleChange}
             value={postData.companyname}
           />
@@ -71,7 +71,7 @@ const Supplier = () => {
         <div>
           <label>Phone</label>
           <input
-            type="tel"
+            type="number"
             name="contact"
             onChange={handleChange}
             value={postData.contact}

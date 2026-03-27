@@ -6,11 +6,11 @@ const PrintBtn = () => {
         window.print();
     }
   return (
-    <button class="Btn" onClick={PrintFunc}>
+    <button className="Btn" onClick={PrintFunc}>
   
-  <div class="sign"><IoMdDownload size={35} className='svg'/></div>
+  <div className="sign"><IoMdDownload size={35} className='svg'/></div>
   
-  <div class="text">Print</div>
+  <div className="text">Print</div>
 </button>
   )
 }

@@ -1648,8 +1648,8 @@ input {
   h2{
     text-align: center;
   }
-  table:last-of-type tbody tr td{
-    padding-left: 1rem;
+  table tbody tr td{
+    text-align: center;
   }
 }
 

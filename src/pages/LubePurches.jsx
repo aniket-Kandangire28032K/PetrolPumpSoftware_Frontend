@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const LubePurches = () => {
   const date = new Date().toISOString().split("T")[0]
+  const URL = import.meta.env.VITE_VITE_BACKEND_URL;
   const [loading, setLoading] = useState(false);
   const [lubeData, setLubeData] = useState({
     date: date,
@@ -66,13 +69,18 @@ const LubePurches = () => {
     )
   }
 
-  const HandleSubmit = e => {
+  const HandleSubmit = async(e) => {
     e.preventDefault();
     setLoading(true)
     try {
-        
+        // const res = await axios.post(`${URL}/api/lube-perchase`)
+       Swal.fire({
+        toast:true,
+        position:'top-right',
+
+       }) 
     } catch (error) {
-        
+        console.log(error.response)
     }finally{
        setLoading(false)
        setLubeData({
@@ -99,7 +107,7 @@ const LubePurches = () => {
   return (
     <div className="lube-purches">
       <h1>Lube Purches</h1>
-      <form>
+      <form onSubmit={HandleSubmit}>
         <div className="inputfield">
           <label htmlFor="">Date</label>
           <input type="date" value={lubeData.date} />

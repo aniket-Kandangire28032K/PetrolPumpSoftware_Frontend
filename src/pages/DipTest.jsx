@@ -104,18 +104,6 @@ const DipTest = () => {
   useEffect(()=>{
     getDipTestData();
   },[])
-  useEffect(() => {
-  let today = new Date().toISOString().split("T")[0]  
-  if (dipTestHistory.length > 0) {
-    const lastEntry = dipTestHistory[0];
-
-    setDipdata((prev) => ({
-      ...prev,
-      date:today,
-      openingStock: lastEntry.actualDioStock, 
-    }));
-  }
-}, [dipTestHistory]);
 
   const onClear = () => {
     // Reset Button Function
@@ -280,7 +268,7 @@ const DipTest = () => {
           { searchMonth === "" &&
             dipTestHistory.map((item)=>(
               <tr key={item._id}>
-                <td>{item.date}</td>
+                <td>{item.date.split("-").reverse().join('/')}</td>
                 <td>{item.product}</td>
                 <td>{item.tank}</td>
                 <td>{item.openingStock}</td>
@@ -299,7 +287,7 @@ const DipTest = () => {
           { filteredHistory.length > 0 &&
             filteredHistory.map((hty)=>(
               <tr key={hty._id}>
-                <td>{hty.date}</td>
+                <td>{hty.date.split("-").reverse().join('/')}</td>
                 <td>{hty.product}</td>
                 <td>{hty.tank}</td>
                 <td>{hty.openingStock}</td>

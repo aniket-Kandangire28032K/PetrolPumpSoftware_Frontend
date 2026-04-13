@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useGet } from "../Hooks/useGet.jsx";
+import React,{ useEffect, useState } from "react";
 import useGetShift from "../Hooks/useGetShift.jsx";
 import useGetLube from "../Hooks/useGetLube.jsx";
 import axios from "axios";
@@ -9,15 +8,17 @@ const CAReportPage = () => {
   const date = new Date();
   const month = String(date.getMonth() + 1).padStart(2, 0);
   const filterDate = `${date.getFullYear()}-${month}`;
-  const { shiftData, getShiftData } = useGetShift();
-  const {lubeData,lubeError} = useGetLube()
+  const { shiftData } = useGetShift();
+  const { lubeData, lubeError } = useGetLube();
   const [expenses, setExpenses] = useState([]);
   const [lube_Data, setLube_Data] = useState([]);
+  const [invoice_Data, setInvoice_Data] = useState([]);
   const [totalValues, setTotalValues] = useState({
     totalSales: 0,
     totalExpenses: 0,
     totalCredits: 0,
-    totalLubes:0
+    totalLubes: 0,
+    totalPurches:0
   });
   // const [sales, setSales] = useState([]);
   let filterData = [];
@@ -25,52 +26,128 @@ const CAReportPage = () => {
   const getExpenses = async () => {
     try {
       const res = await axios.get(`${URL}/api/expenses`);
-      let filterExpenses= res.data.expenses.filter((item) => (String(item.date).includes(filterDate)))
-      const expens = filterExpenses.reduce((acc,item)=>{
-        if(!acc[item.category]){
-          acc[item.category] = 0
+      console.log(res.data.expens)
+      let filterExpenses = res.data.expenses.filter((item) =>
+        String(item.date).includes(filterDate),
+      );
+      const expens = filterExpenses.reduce((acc, item) => {
+        if (!acc[item.category]) {
+          acc[item.category] = 0;
         }
-         acc[item.category] += item.amount
-        return acc
-      },{})
-      const totalexpenses = Object.values(expens).reduce((sum,val)=> sum + val,0)
+        acc[item.category] += item.amount;
+        return acc;
+      }, {});
+      const totalexpenses = Object.values(expens).reduce(
+        (sum, val) => sum + val,
+        0,
+      );
       setExpenses(expens);
-      setTotalValues(prev=>({...prev,totalExpenses:totalexpenses}))
+      setTotalValues((prev) => ({ ...prev, totalExpenses: totalexpenses }));
     } catch (error) {
       console.log(error);
     }
   };
-
+  const getInvoices = async () => {
+    try {
+      const res = await axios.get(`${URL}/api/invoice`);
+      setInvoice_Data(res.data.invoice);
+      console.log(res.data.invoice);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
   useEffect(() => {
     if (!shiftData) return;
     filterData = shiftData.filter((e) => e.date.includes(filterDate));
-    const SaleTotal = filterData.reduce((sum, s) => sum += s.total, 0);
-    console.log(SaleTotal)
-    setTotalValues(prev => ({ ...prev, totalSales: SaleTotal }));
-
+    const SaleTotal = filterData.reduce((sum, s) => (sum += s.total), 0);
+    setTotalValues((prev) => ({ ...prev, totalSales: SaleTotal }));
   }, [shiftData]);
-  
-  useEffect(()=>{
-    if(!lubeData) return;
-    let lubes = lubeData.filter(item => item.date.includes(filterDate));
-    setLube_Data(lubes);
-    let total_Lube =  lubes.reduce( (sum,item)=> sum+= item.amount ,0)
-    setTotalValues(prev=>({
-      ...prev,
-      totalLubes:total_Lube
-    }))
 
-  },[lubeData])
+  useEffect(() => {
+    if (!lubeData) return;
+    let lubes = lubeData.filter((item) => item.date.includes(filterDate));
+    setLube_Data(lubes);
+    let total_Lube = lubes.reduce((sum, item) => (sum += item.amount), 0);
+    setTotalValues((prev) => ({
+      ...prev,
+      totalLubes: total_Lube,
+    }));
+  }, [lubeData]);
+
   useEffect(() => {
     getExpenses();
+    getInvoices();
   }, []);
+  useEffect(()=>{
+    if(!invoice_Data) return;
+    let purchesTotal = invoice_Data.reduce((sum,item)=> sum+=item.finaltotal ,0)
+    setTotalValues(
+      prev => ({
+        ...prev,
+        totalPurches:purchesTotal
+      })
+    )
+  },[invoice_Data])
   return (
     <div className="ca-report">
       <h2>CA Financial Report</h2>
-
+      <div className="search-box">
+        <label htmlFor="">Start:</label>
+        <input type="date" name="" id="" />
+        <label htmlFor="">End:</label>
+        <input type="date" name="" id="" />
+        <button>Clear</button>
+      </div>
       {/* Sales Summary */}
+      <h3>Purches Summary</h3>
+      <table border={1}>
+        <thead>
+          <tr>
+            
+            <th>Product</th>
+            <th>qty</th>
+            <th>rate</th>
+            <th>Vat</th>
+            <th>total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {invoice_Data.length > 0 ? (
+            invoice_Data.map((inv) => (
+              <React.Fragment key={inv._id}>
+                <tr>
+                  <td colSpan="6" style={{textAlign:"start",fontWeight:"500" }}>
+                    Date: {inv.date} | Invoice No: {inv.invoiceno} 
+                  </td>
+                </tr>
+                {inv.items.map((item, idx) => (
+                  <tr key={idx}>
+                    <td style={{fontWeight:"500"}}>{item.itemname}</td>
+                    <td>{item.qty}</td>
+                    <td>{item.rate}</td>
+                    <td>{item.vat}</td>
+                    <td>{item.total}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6">No items found</td>
+            </tr>
+          )}
+        </tbody>
+        <tfoot>
+          {
+              <tr>
+                <td colSpan={4} style={{textAlign:"end",fontWeight:"500",paddingRight:"0.5rem"}}>Total Fuel Purches</td>
+                <td style={{fontWeight:"500",paddingLeft:"0.5rem"}}>{totalValues.totalPurches}</td>
+              </tr>
+          }
+        </tfoot>
+      </table>
       <h3>Sales Summary</h3>
-      <table border="1"width="100%">
+      <table border="1" width="100%">
         <thead>
           <tr>
             <th>Date</th>
@@ -93,7 +170,14 @@ const CAReportPage = () => {
             )),
           )}
           <tr>
-            <td colSpan="4" style={{ textAlign: "right", fontWeight: "bold",paddingRight:"0.5rem" }}>
+            <td
+              colSpan="4"
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+                paddingRight: "0.5rem",
+              }}
+            >
               Total Sales:
             </td>
             <td style={{ fontWeight: "bold" }}>{totalValues.totalSales}</td>
@@ -103,8 +187,8 @@ const CAReportPage = () => {
       <br />
 
       {/* Expenses Summary */}
-      
-      <h3 style={{marginBottom:"0.2rem"}}>Lube Summary</h3>    
+
+      <h3 style={{ marginBottom: "0.2rem" }}>Lube Summary</h3>
       <table border={1} width="100%">
         <thead>
           <tr>
@@ -119,26 +203,41 @@ const CAReportPage = () => {
           </tr>
         </thead>
         <tbody>
-          { lube_Data && lube_Data.map(lube => 
-          <tr key={lube._id}>
-            <td>{lube.date}</td>
-            <td>{lube.product}</td>
-            <td>{lube.qty}</td>
-            <td>{lube.gst}</td>
-            <td>{lube.perAmount}</td>
-            <td style={{textTransform:"uppercase"}}>{lube.paymentMode}</td>
-            <td>{lube.amount}</td>
-          </tr>)
-          }
-          { lubeError &&  <tr>
+          {lube_Data &&
+            lube_Data.map((lube) => (
+              <tr key={lube._id}>
+                <td>{lube.date}</td>
+                <td>{lube.product}</td>
+                <td>{lube.qty}</td>
+                <td>{lube.gst}</td>
+                <td>{lube.perAmount}</td>
+                <td style={{ textTransform: "uppercase" }}>
+                  {lube.paymentMode}
+                </td>
+                <td>{lube.amount}</td>
+              </tr>
+            ))}
+          {lubeError && (
+            <tr>
               <td colSpan={7}>No Data For This Month</td>
-            </tr>}
+            </tr>
+          )}
         </tbody>
         <tfoot>
-          <tr >
-            <td colSpan={6} style={{ textAlign: "right", fontWeight: "bold",paddingRight:"0.5rem" }}>Total Lube Sales:</td>
-            <td style={{textAlign:"center",fontWeight:"bold"}}>{totalValues.totalLubes || 0}</td>
-            
+          <tr>
+            <td
+              colSpan={6}
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+                paddingRight: "0.5rem",
+              }}
+            >
+              Total Lube Sales:
+            </td>
+            <td style={{ textAlign: "center", fontWeight: "bold" }}>
+              {totalValues.totalLubes || 0}
+            </td>
           </tr>
         </tfoot>
       </table>
@@ -152,23 +251,27 @@ const CAReportPage = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            Object.entries(expenses).map(([category,amount]) =>(
-              <tr key={category}>
-                <td style={{ textTransform: "capitalize" }}>{category}</td>
-                <td>{amount}</td>
-              </tr>
-            ))
-          }
+          {Object.entries(expenses).map(([category, amount]) => (
+            <tr key={category}>
+              <td style={{ textTransform: "capitalize" }}>{category}</td>
+              <td>{amount}</td>
+            </tr>
+          ))}
           <tr>
-            <td style={{ textAlign: "right", fontWeight: "bold",paddingRight:"0.5rem" }}>
+            <td
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+                paddingRight: "0.5rem",
+              }}
+            >
               Total Expenses:
             </td>
             <td style={{ fontWeight: "bold" }}>{totalValues.totalExpenses}</td>
           </tr>
         </tbody>
       </table>
-          <PrintBtn/>
+      <PrintBtn />
     </div>
   );
 };

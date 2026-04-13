@@ -13,9 +13,15 @@ const Supplier = () => {
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPostData({
-      ...postData,
-      [name]: value,
+    setPostData(prev=>{
+      let newValue = value
+      if(name=="name" || name === "companyname"){
+        newValue = value.replace(/[0-9]/g,"")
+      }
+      return {
+        ...prev,
+        [name]:newValue
+      }
     });
   };
 

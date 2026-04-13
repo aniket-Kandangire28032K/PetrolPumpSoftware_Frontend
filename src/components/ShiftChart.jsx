@@ -61,7 +61,7 @@ const ShiftChart = ({ dates }) => {
     labels: sortedKeys,
     datasets: [
       {
-        label: "Shifts",
+        label: "Shift Chart",
         data: sortedValues,
         backgroundColor: ["#FFE74C", "#FF5964", "#2274A5"],
         borderWidth: 0,
@@ -76,6 +76,7 @@ const ShiftChart = ({ dates }) => {
         options={{
           responsive: true,
           maintainAspectRatio: false,
+
         }}
       />
     </div>

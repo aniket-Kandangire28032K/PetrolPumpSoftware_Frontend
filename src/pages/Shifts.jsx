@@ -62,18 +62,22 @@ const Shifts = () => {
             <th>Name</th>
             <th>Cashier</th>
             <th>Shift</th>
-            <th>sales</th>
+            <th>Cashed Amount</th>
+            <th>Remaining</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
           {filteredData.map((item,num)=>(
               <tr key={item._id}>
                 <td>{num+1}</td>
-                <td>{item.date.split("-").reverse().join("-")}</td>
-                <td>{item.name}</td>
-                <td>{item.cashier}</td>
-                <td>{item.shift}</td>
-                <td>{item.total}</td>
+                <td>{item?.date}</td>
+                <td>{item?.name}</td>
+                <td>{item?.cashier}</td>
+                <td>{item?.shift}</td>
+                <td>{item?.submitAmount || 0}</td>
+                <td>{item?.remainingAmount || 0}</td>
+                <td>{item?.total}</td>
               </tr>
             ))
           }

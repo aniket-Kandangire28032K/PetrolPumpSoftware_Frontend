@@ -46,13 +46,11 @@ const FuelAdd = () => {
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
           <label>Product Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={postData.name}
-            onChange={(e) => handleChange(e)}
-            required
-          />
+          <select name="name" value={postData.name} onChange={(e) => handleChange(e)} required>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+          </select>
         </div>
         <div>
           <label>Liters:</label>

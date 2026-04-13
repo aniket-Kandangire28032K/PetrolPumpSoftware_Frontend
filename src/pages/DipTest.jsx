@@ -25,12 +25,32 @@ const DipTest = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setDipdata({
-      ...dipData,
+  const { name, value } = e.target;
+
+  setDipdata((prev) => {
+    const updated = {
+      ...prev,
       [name]: value,
-    });
-  };
+    };
+
+    // Convert safely to numbers
+    const opening = Number(updated.openingStock || 0);
+    const receipt = Number(updated.receiptStock || 0);
+    const sale = Number(updated.actualSale || 0);
+    const actualDip = Number(updated.actualDioStock || 0);
+
+    // 1. Total Stock
+    updated.totalStock = opening + receipt;
+
+    // 2. Closing Stock
+    updated.closingStock = updated.totalStock - sale;
+
+    // 3. Variation
+    updated.variation = actualDip - updated.closingStock;
+
+    return updated;
+  });
+};
   const handleSubmit = async(e) => {
     e.preventDefault();
     setLoading(true)
@@ -44,24 +64,23 @@ const DipTest = () => {
     }finally{
       setLoading(false)
       getDipTestData();
+      setDipdata({
+        date: "",
+    product: "",
+    tank: "",
+    openingStock: 0,
+    receiptStock: 0,
+    totalStock: 0,
+    actualSale: 0,
+    closingStock: 0,
+    productDip: 0,
+    actualDioStock: 0,
+    variation: 0,
+    waterDip: 0,
+      })
     }
   };
-  const onClear = () => {
-    setDipdata({
-      date: "",
-      product: "",
-      tank: "",
-      openingStock: 0,
-      receiptStock: 0,
-      totalStock: 0,
-      actualSale: 0,
-      closingStock: 0,
-      productDip: 0,
-      actualDioStock: 0,
-      variation: 0,
-      waterDip: 0,
-    });
-  };
+  
   const filterDiptest = (e) =>{
     setSearchMonth(e.target.value)
     let filterMonth = e.target.value;
@@ -77,6 +96,7 @@ const DipTest = () => {
       console.log(error.response)
     }
   }
+
   const resetFilter = () =>{
     setSearchMonth("")
     setFilteredHistory([])
@@ -84,6 +104,36 @@ const DipTest = () => {
   useEffect(()=>{
     getDipTestData();
   },[])
+  useEffect(() => {
+  let today = new Date().toISOString().split("T")[0]  
+  if (dipTestHistory.length > 0) {
+    const lastEntry = dipTestHistory[0];
+
+    setDipdata((prev) => ({
+      ...prev,
+      date:today,
+      openingStock: lastEntry.actualDioStock, 
+    }));
+  }
+}, [dipTestHistory]);
+
+  const onClear = () => {
+    // Reset Button Function
+    setDipdata({
+      date: "",
+      product: "",
+      tank: "",
+      openingStock: 0,
+      receiptStock: 0,
+      totalStock: 0,
+      actualSale: 0,
+      closingStock: 0,
+      productDip: 0,
+      actualDioStock: 0,
+      variation: 0,
+      waterDip: 0,
+    });
+  };
   return (
     <div className="diptest">
       <h2>Dip Test</h2>
@@ -137,7 +187,7 @@ const DipTest = () => {
           <label htmlFor="">Total </label>
           
           <input
-            type="number"
+            type="number" readOnly
             name="totalStock" required
             value={dipData.totalStock === 0 ? "" : dipData.totalStock}
             onChange={handleChange}
@@ -156,7 +206,7 @@ const DipTest = () => {
           <label htmlFor="">Closing Stock</label> {/*(total-actual sales)*/}
           <input
             type="number" required
-            name="closingStock"
+            name="closingStock" readOnly
             value={dipData.closingStock === 0 ? "" : dipData.closingStock}
             onChange={handleChange}
           />

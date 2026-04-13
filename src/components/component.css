@@ -14,7 +14,10 @@
     gap: 1rem 1.5rem;
 
 }
-
+.customer form h2{
+    grid-column: span 2;
+    padding-left: 1rem;
+}
 
 .customer form label{
     font-weight: 500;

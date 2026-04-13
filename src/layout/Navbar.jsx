@@ -60,6 +60,7 @@ const Navbar = ({onLogout}) => {
       </div>     
       <NavLink to="/diptest" onClick={()=>handleoption(null)}><FaFlask className='option-icon'/>Dip Test</NavLink>
       <NavLink to="/lube" onClick={()=>handleoption(null)}><RiOilFill className='option-icon'/>Lube</NavLink>
+      <NavLink to="/lube-entry" onClick={()=>handleoption(null)}><RiOilFill className='option-icon'/>Lube Purches</NavLink>
       <NavLink to="/sales" onClick={()=>handleoption(null)}><FaChartPie className='option-icon'/>Sales Report</NavLink>
       <NavLink to="/expense" onClick={()=>handleoption(null)}><GiExpense className='option-icon'/>Expense</NavLink>
       <NavLink to="/request-expense" onClick={()=>handleoption(null)}><GiExpense className='option-icon'/>Request Expenses</NavLink>

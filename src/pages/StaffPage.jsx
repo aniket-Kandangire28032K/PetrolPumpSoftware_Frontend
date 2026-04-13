@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { RiEdit2Fill } from "react-icons/ri";
+import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 
 const StaffPage = () => {
@@ -66,6 +67,17 @@ const StaffPage = () => {
     }
     
   }
+  const DeleteStaff = async (id) => {
+    try {
+      await axios.delete(`${URL}/api/staff/${id}`)
+      console.log(id)
+    } catch (error) {
+      console.log(error.response)
+    }finally{
+      getStaff();
+    }
+    
+  }
   return (
     <div className="staff page">
       <h2>Our Staff</h2>
@@ -109,6 +121,8 @@ const StaffPage = () => {
               {/* <option value="cashier">Cashier</option> */}
               <option value="other">Other</option>
             </select>
+            <label htmlFor="">Cash</label>
+            <input type="number" name="cash" onChange={e=> { setStaffDetails({ ...staffDetails,cash:e.target.value})} } />
             <label>Status:</label>
             <select name="status" onChange={e=> { setStaffDetails({ ...staffDetails,status:e.target.value})} }>
               <option value="">--Options--</option>
@@ -128,6 +142,7 @@ const StaffPage = () => {
             <th>Staff name</th>
             <th>contact</th>
             <th>address</th>
+            <th>cash</th>
             <th>role</th>
             <th>status</th>
           </tr>
@@ -139,8 +154,9 @@ const StaffPage = () => {
               <td>{item.name}</td>
               <td>{item.contact || "N/A"}</td>
               <td>{item.address || "N/A"}</td>
+              <td>{item.cash}</td>
               <td>{item.role || "N/A"}</td>
-              <td>
+              <td >
                 {item.status || "N/A"}{" "}
                 <button
                   type="button"
@@ -149,6 +165,7 @@ const StaffPage = () => {
                 >
                   <RiEdit2Fill />
                 </button>
+                <button type="button" className="del-btn" onClick={()=> DeleteStaff(item._id)} ><MdDelete/></button>
               </td>
             </tr>
           )): <tr>
@@ -189,6 +206,8 @@ const StaffPage = () => {
               {/* <option value="cashier">Cashier</option> */}
               <option value="other">Other</option>
             </select>
+            <label htmlFor="">Cash</label>
+            <input type="number" name="cash" onChange={e=> { setStaffDetails({ ...staffDetails,cash:e.target.value})} } />
             <label>Status:</label>
             <select name="status" value={staffDetails.status} onChange={e=> { setStaffDetails({ ...staffDetails,status:e.target.value})} }>
               <option value="active">Active</option>

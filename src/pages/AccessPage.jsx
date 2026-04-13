@@ -84,9 +84,9 @@ const AccessPage = () => {
     setDisplay("update");
     setConfirmPassword(item.password)
   };
-  const displaypassword = (name)=>{
+  // const displaypassword = (name)=>{
     
-  }
+  // }
   return (
     <div className="access">
       <h2>Users</h2>

@@ -16,6 +16,7 @@ const TankerEntry = () => {
     challandate: "",
     gstno: "",
     transportername: "",
+    transportnumber:"",
     transportercontact: "",
     remark: "",
     items: [{ itemname: "", qty: "", rate: "", total: ""}],
@@ -24,10 +25,15 @@ const TankerEntry = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData(prev=>{
+      let newValue=value
+      if(name === "transportnumber"){
+      newValue = value.replace(/\D/g, "")
+    }
+     return {
+      ...prev,
+      [name]: newValue,
+    }});
   };
 
   const handleSubmit = async (e) => {
@@ -35,7 +41,7 @@ const TankerEntry = () => {
     console.log(formData);
     try {
       await axios.post(`${URL}/api/invoice`, formData);
-      Swal("Data Added");
+      Swal.fire("","Invoice Added","success");
     } catch (error) {
       console.log(error);
     } 
@@ -50,6 +56,7 @@ const TankerEntry = () => {
         gstno: "",
         transportername: "",
         transportercontact: "",
+        transporternumber: "",
         dlycharge: "",
         remark: "",
         finaltotal: "",
@@ -102,10 +109,12 @@ const TankerEntry = () => {
     updatedItems[index][field] = value;
 
     if (field === "qty" || field === "rate" || field === "vat") {
-      updatedItems[index].total =
-        (Number(updatedItems[index].qty || 0) *
-        Number(updatedItems[index].rate || 0)) + Number(updatedItems[index].vat || 0)
-    }
+    const qty = Number(updatedItems[index].qty || 0);
+    const rate = Number(updatedItems[index].rate || 0);
+    const vat = Number(updatedItems[index].vat || 0);
+    const Vatmount = Number((vat / 100) * (qty * rate))  
+    updatedItems[index].total = Number(Vatmount) + Number( qty * rate);
+  }
     
     setFormData({
       ...formData,
@@ -157,12 +166,12 @@ const TankerEntry = () => {
           <input type="text" name="transportername" onChange={handleChange} value={formData.transportername} />
         </div>
         <div>
-          <label htmlFor="">Delv Contact No:</label>
-          <input
-            type="text" value={formData.transportercontact}
-            name="transportercontact"
-            onChange={handleChange}
-          />
+          <label htmlFor="">Transport Contact</label>
+          <input type="number" maxLength={10} name="transportercontact" onChange={handleChange} value={formData.transportercontact} />
+        </div>
+        <div>
+          <label htmlFor="">Vehicle No:</label>
+          <input type="text" name="transportnumber" onChange={handleChange} value={formData.transportnumber} />
         </div>
         <div>
           <label>Delivery Charges</label>
@@ -182,7 +191,7 @@ const TankerEntry = () => {
                 <th>Item name</th>
                 <th>qty(l)</th>
                 <th>rate</th>
-                <th>VAT</th>
+                <th>VAT(%)</th>
                 <th>total</th>
               </tr>
             </thead>

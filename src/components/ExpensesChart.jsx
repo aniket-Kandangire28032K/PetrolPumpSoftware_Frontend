@@ -72,7 +72,7 @@ const ExpensesChart = ({ dates }) => {
     labels: sortedKeys,
     datasets: [
       {
-        label: "Daily Expense",
+        label: "Expenses Chart",
         data: sortedValues,
         backgroundColor: "#008fff",
         borderWidth: 0,

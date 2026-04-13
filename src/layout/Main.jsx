@@ -23,6 +23,7 @@ const Dashboard = lazy(()=> import("../pages/Dashboard.jsx"))
 const DipTest = lazy(()=> import('../pages/DipTest.jsx'))
 const Lube = lazy(()=> import('../pages/Lube.jsx'))
 const Resquest = lazy(()=> import('../pages/ExpensesRequest.jsx'))
+const LubEntry = lazy(()=> import('../pages/LubePurches.jsx'))
  
 const Main = () => {
   const role = useSelector(state => state.user.role)
@@ -48,7 +49,8 @@ const Main = () => {
         <Route path="/supplier" element={<Supplier/>}/>
         <Route path="/supplier-manage" element={<ManagaeSuppliers/>}/>
         <Route path="/tank-stock" element={<TankStock/>}/>
-        {/* <Route path='/' element={<LoginPage/>}/> */}
+        <Route path="/lube-entry" element={<LubEntry/>}/>
+        
         <Route path="*" element={<Error/>}/>
       </Routes>
     </div>

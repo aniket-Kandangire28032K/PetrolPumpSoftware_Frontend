@@ -124,7 +124,7 @@ const ExpenseManagement = () => {
 
         <h3>Grand Total: ₹ {getGrandTotal()}</h3>
 
-        <button type="submit">Save All Expenses</button>
+        <button type="submit">Save Expenses</button>
       </form>
       <ExpensesDisplay/>  
       <PrintBtn/>

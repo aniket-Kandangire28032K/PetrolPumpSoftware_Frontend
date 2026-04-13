@@ -73,7 +73,7 @@ const BarChart = ({ dates }) => {
     labels: sortedKeys,
     datasets: [
       {
-        label: "Daily sales",
+        label: "Sales Chart",
         data: sortedValues,
         backgroundColor: "#255957",
         borderWidth: 0,

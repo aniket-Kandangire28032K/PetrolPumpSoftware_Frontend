@@ -79,7 +79,7 @@ const ManageFuel = () => {
             <th>Name</th>
             <th>Qty(L)</th>
             <th>Rate(₹)</th>
-            <th>Supplier</th>
+            
             <th>Tank</th>
             <th>Actions</th>
           </tr>
@@ -114,7 +114,6 @@ const ManageFuel = () => {
                 <td>{item.name}</td>
                 <td>{item.liters}</td>
                 <td>{item.rate}</td>
-                <td>{item.suppliername}</td>
                 <td>{item.tank || "Tank Not Set"}</td>
                 <td>
                   <button type="button" onClick={() => editOpen(item)}>

@@ -8,7 +8,6 @@ const FuelAdd = () => {
   const [postData, setPostData] = useState({
     name:"",
     liters:"",
-    suppliername: "",
     rate: "",
     tank:""
   });
@@ -34,7 +33,6 @@ const FuelAdd = () => {
       setPostData({
         name: "",
         liters: "",
-        suppliername: "",
         rate: "",
         tank:""
       });
@@ -62,16 +60,6 @@ const FuelAdd = () => {
             onChange={(e) => handleChange(e)}
             required
             step="any"
-          />
-        </div>
-        <div>
-          <label>Supplier Name:</label>
-          <input
-            type="text"
-            name="suppliername"
-            value={postData.suppliername}
-            onChange={(e) => handleChange(e)}
-            required
           />
         </div>
         <div>

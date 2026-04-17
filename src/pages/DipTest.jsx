@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 
 import Swal from "sweetalert2";
 import PrintBtn from "../components/PrintBtn.jsx";
+import TankerDipTest from "../components/TankerDipTest.jsx";
 const DipTest = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
   const [loading,setLoading] = useState(false)
+  const [display,setDisplay] = useState('tanker');
   const [searchMonth,setSearchMonth] = useState("");
   const [dipTestHistory,setDipTestHistory] = useState([]);
   const [filteredHistory,setFilteredHistory] = useState([])
@@ -122,10 +124,18 @@ const DipTest = () => {
       waterDip: 0,
     });
   };
+  const toggleDisplay = ()=>{
+    if(display === 'daily'){
+      setDisplay('tanker')
+    }else{
+      setDisplay('daily')
+    }
+  }
   return (
     <div className="diptest">
       <h2>Dip Test</h2>
-      <form onSubmit={handleSubmit}>
+       <button type="button" className="toggle" onClick={toggleDisplay} >Tests</button> 
+      {display == 'daily' && <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="">Date</label>
           <input
@@ -242,12 +252,13 @@ const DipTest = () => {
             Clear
           </button>
         </div>
-      </form>
-      <div className="searchbox">
+      </form>}
+      { display == 'daily' && <div className="searchbox">
       <input type="month" className="search-month" value={searchMonth} onChange={filterDiptest} />
       <button type="button" onClick={resetFilter}>Clear</button>
-      </div>
-      <table border={1}>
+      </div>}
+
+      {display == 'daily' && <table border={1}>
         <thead>
           <tr>
             <th>Date</th>
@@ -309,8 +320,12 @@ const DipTest = () => {
             </tr>
           }
         </tbody>
-      </table>
+      </table> }
+      {
+        display == 'tanker'  && <TankerDipTest/>
+      }
       <PrintBtn/>
+
     </div>
   );
 };

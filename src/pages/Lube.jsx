@@ -207,7 +207,7 @@ const printRecipt = (item) =>{
           />
         </div>
         <div>
-          <label>Qty</label>
+          <label>Qty in (ml)</label>
           <input
             type="number"
             value={lubeData.qty}
@@ -217,7 +217,7 @@ const printRecipt = (item) =>{
           />
         </div>
         <div>
-          <label>GST%</label>
+          <label>GST in (%)</label>
           <input
             type="number"
             value={lubeData.gst}
@@ -227,7 +227,7 @@ const printRecipt = (item) =>{
           />
         </div>
         <div>
-          <label>Per / Liter</label>
+          <label>Per / Unit</label>
           <input
             type="number"
             value={lubeData.perAmount === 0 ? "" : lubeData.perAmount}
@@ -279,7 +279,7 @@ const printRecipt = (item) =>{
               <th> date</th>
               <th>product</th>
               <th>customer Name</th>
-              <th>qty(L)</th>
+              <th>qty(ml)</th>
               <th>gst</th>
               <th>per / Amount</th>
               <th>amount</th>

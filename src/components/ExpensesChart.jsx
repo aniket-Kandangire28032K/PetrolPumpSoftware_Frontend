@@ -24,7 +24,7 @@ ChartJS.register(
 const ExpensesChart = ({ dates }) => {
   const URL = import.meta.env.VITE_BACKEND_URL;
   const [expenses, setExpenses] = useState([]);
-
+  // console.log(dates)
   // 👉 Current month (YYYY-MM)
   const currentDate = new Date();
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
@@ -35,6 +35,7 @@ const ExpensesChart = ({ dates }) => {
     try {
       const res = await axios.get(`${URL}/api/expenses`);
       setExpenses(res.data.expenses);
+      console.log(res.data.expenses)
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +67,7 @@ const ExpensesChart = ({ dates }) => {
   // 👉 Sort data
   const sortedKeys = Object.keys(result).sort();
   const sortedValues = sortedKeys.map((key) => result[key]);
-
+  
   // 👉 Chart data
   const data = {
     labels: sortedKeys,

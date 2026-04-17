@@ -29,6 +29,7 @@ body::-webkit-scrollbar{
 nav{
     user-select: none;
     background-color: var(--primaryColor);
+    background-color: #00afff;
     background-color: #f7f7f7;
     width:var(--navbar-width);
     height: 100dvh;
@@ -49,7 +50,7 @@ nav div{
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 0.1rem;
     list-style-type: none;
 } 
 
@@ -67,16 +68,17 @@ nav div a,nav div span{
     transition: all ease-in-out 0.2s;
     font-weight:500;
     text-wrap: nowrap;
-    border-radius: 8px;
+    border-radius:0 8px 8px 0 ;
 }
+
 nav  div a:hover{
-    
     color:#1ca975;
     background-color:#1ca97530;
 }
 nav div a.active{
-    color: teal;
+    color: rgb(0, 80, 80);
     background-color: rgba(0, 128, 128, 0.19);
+
 }
 
 nav div span{

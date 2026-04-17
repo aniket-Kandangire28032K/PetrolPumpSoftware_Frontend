@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import CustomerList from "../Hooks/CustomerList.jsx";
+import useCustomerList from "../Hooks/CustomerList.jsx";
 import { Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -24,8 +24,8 @@ const Dashboard = () => {
   const [display, setDisplay] = useState("");
   const [fuel,setFuel] = useState({})
   const navigate = useNavigate();
-  const {customerList,success,getCustomers} = CustomerList();
-  console.log(customerList)
+  const {customerList,success,getCustomers} = useCustomerList();
+  
   const getProducts = async () => {
     try {
       const res = await axios.get(`${Backendurl}/api/fuel`);
@@ -37,6 +37,8 @@ const Dashboard = () => {
   };
   useEffect(() => {
     getProducts();
+    // getCustomers();
+    console.log(customerList)
   }, []);
   const Data = {
     labels: products.map((fuel) => fuel.name.toUpperCase()),
@@ -104,7 +106,7 @@ const Dashboard = () => {
         <div onClick={() => navigate("/customer")}>
           <IoPersonSharp size={70} color="white" />
           <div>
-            <h1>{customerList?.length || 'NA'}</h1>
+            {/* <h1>{String(customerList.length) || 'NA'}</h1> */}
             <p>Total Customers</p>
           </div>
         </div>
@@ -178,7 +180,7 @@ const Dashboard = () => {
         )}
         
       </div>
-      {products && <div className="chart-area">
+      {products.length && <div className="chart-area">
         <Pie data={Data} options={Pieoptions} />
       </div>}
     </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import URL from '../assets/URL.js';
-const CustomerList = () => {
+const useCustomerList = () => {
    const [customerList,setCustomerList] = useState();
    const [success,setSuccess] = useState();
 
@@ -9,7 +9,7 @@ const CustomerList = () => {
     try {
       const res = await axios.get(`${URL}/api/customer`)
       setCustomerList(res.data.customers); 
-      console.log(res.data.customers) 
+    //   console.log(res.data.customers) 
       setSuccess(true)  
     } catch (error) {
         setSuccess(false)  
@@ -19,7 +19,7 @@ const CustomerList = () => {
 useEffect(()=>{
     getCustomers();
 },[])
-    return (customerList,success,getCustomers)
+    return {customerList,success,getCustomers};
 }
 
-export default CustomerList
+export default useCustomerList

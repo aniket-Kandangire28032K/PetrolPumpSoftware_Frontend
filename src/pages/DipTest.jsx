@@ -133,9 +133,10 @@ const DipTest = () => {
   }
   return (
     <div className="diptest">
-      <h2>Dip Test</h2>
+      
        <button type="button" className="toggle" onClick={toggleDisplay} >Tests</button> 
       {display == 'daily' && <form onSubmit={handleSubmit}>
+          <h2>Daily Dip Test</h2>
         <div>
           <label htmlFor="">Date</label>
           <input

@@ -1772,6 +1772,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
+  form h2{
+    grid-column: span 3;
+  }
   form div {
     /* border: 1px solid; */
     padding: 0.3rem;

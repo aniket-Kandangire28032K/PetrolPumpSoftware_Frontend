@@ -209,16 +209,23 @@ const LubePurches = () => {
     })
 
   },[lubeData.productList])
+  
+  const toggleDisplay = () =>{
+    // toggle View
+    if(display === 'form'){
+      setDisplay("list")
+    }else{
+      setDisplay("form")
+    }
+  }
   return (
     <div className="lube-purches">
       <h1>Lube Purches</h1>
       <div className="btns">
-        <button type="button" onClick={() => setDisplay("form")}>
-          Purchase Form
+        <button type="button" onClick={toggleDisplay}>
+          { display === 'form' ?  "Lube History" : "Lube Form" }
         </button>
-        <button type="button" onClick={() => setDisplay("list")}>
-          Purchase History
-        </button>
+        
       </div>
       {display === "form" && (
         <form onSubmit={HandleSubmit}>

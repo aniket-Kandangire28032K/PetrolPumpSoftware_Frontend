@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import URL from "../assets/URL.js";
+
 const CustomerList = () => {
   const [customerList, setCustomerList] = useState([]);
 
   const getCustomers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/customer");
+      const res = await axios.get(`${URL}/api/customer`);
       setCustomerList(res.data.customers);
     } catch (error) {
       console.log(error.message);

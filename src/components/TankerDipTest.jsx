@@ -78,7 +78,7 @@ const TankerDipTest = () => {
     }
   return (
     <>
-    <h3 style={{textAlign:'center'}}>Import Tank Dip Test</h3>
+    <h2 style={{textAlign:'center'}}>Import Tank Dip Test</h2>
     <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="">Date</label>
@@ -153,7 +153,7 @@ const TankerDipTest = () => {
             name="waterDip" value={testData.waterDip}
           />
         </div>
-        <div>
+        <div style={{justifyContent:"center"}}> 
           { !loading ? <button type="submit">Submit</button> : <button disabled style={{backgroundColor:"#6f93fe"}} type="submit">Submit</button>}
           <button type="button" onClick={clearData}>
             Clear

@@ -89,29 +89,28 @@ const Dashboard = () => {
             <p>Type of Fuels</p>
           </div>
         </div>
-        <div onClick={() => navigate("/supplier-manage")}>
+        {/* <div onClick={() => navigate("/supplier-manage")}>
           <MdLocalShipping size={80} color="white" />
           <div>
             <h1>3</h1>
             <p>Total Suppliers</p>
           </div>
-        </div>
-        <div onClick={() => navigate("/manage-invoice")}>
+        </div> */}
+        {/* <div onClick={() => navigate("/manage-invoice")}>
           <FaFileInvoice size={70} color="white" />
           <div>
             <h1>5</h1>
             <p>Total Invoices</p>
           </div>
-        </div>
+        </div> */}
         <div onClick={() => navigate("/customer")}>
           <IoPersonSharp size={70} color="white" />
           <div>
-            {/* <h1>{String(customerList.length) || 'NA'}</h1> */}
+            <h1>{String(customerList?.length) ?? 'NA'}</h1>
             <p>Total Customers</p>
           </div>
         </div>
       </div>
-      
       <div className="rates">
         <h3>Fuel Rates</h3>
         <table border={1}>
@@ -180,7 +179,8 @@ const Dashboard = () => {
         )}
         
       </div>
-      {products.length && <div className="chart-area">
+      
+      {products.length > 0 && <div className="chart-area">
         <Pie data={Data} options={Pieoptions} />
       </div>}
     </div>

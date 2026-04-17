@@ -7,7 +7,7 @@ import TankerDipTest from "../components/TankerDipTest.jsx";
 const DipTest = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
   const [loading,setLoading] = useState(false)
-  const [display,setDisplay] = useState('tanker');
+  const [display,setDisplay] = useState('daily');
   const [searchMonth,setSearchMonth] = useState("");
   const [dipTestHistory,setDipTestHistory] = useState([]);
   const [filteredHistory,setFilteredHistory] = useState([])

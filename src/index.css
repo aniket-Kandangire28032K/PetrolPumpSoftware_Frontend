@@ -26,18 +26,12 @@ body::-webkit-scrollbar{
 }
 nav{
     user-select: none;
-    /* background-color: var(--primaryColor); */
-    background: linear-gradient(180deg, hsla(208, 33%, 21%, 1) 0%, hsla(211, 36%, 46%, 1) 100%);
-    background: linear-gradient(360deg, #5691c8, #457fca);
-    background: #161a23;
-    background: linear-gradient(to top, crimson, tomato);
-    
-    
-    
+    background: linear-gradient(180deg, teal, hsla(211, 36%, 46%, 1) 100%);
     width:var(--navbar-width);
     height: 100dvh;
     anchor-name: --nav-anchor;
     left: 0;
+    top: 0;
     position: fixed;
     padding-top: 0.4rem;
     transition: all ease-in-out 0.4s;
@@ -71,14 +65,8 @@ nav div a,nav div span{
 }
 
 nav  div a:hover,span:hover{
-    /* color:#1ca975; */
-    color: #222 !important;
-    /* background-color:#1ca97530; */
-}
-nav div a.active{
-    color: #111 !important;
-    /* background-color: #ffffff46; */
-    border-right: 5px solid #ff5100;
+    
+    background-color:#ffffff2d;
 }
 
 nav div span{
@@ -95,7 +83,7 @@ nav div span .icon{
 }
 .dropdown .dropdown-option a{
     padding-left: 2rem;
-    color: #f5f5f5 !important;
+    color: #eee !important;
 }
 .option-icon{
     font-size: 1.3rem;
@@ -104,7 +92,7 @@ nav div span .icon{
 }
 .logout-btn{
     position: absolute;
-    bottom: 4rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
     position-anchor: --nav-anchor;
@@ -112,7 +100,7 @@ nav div span .icon{
     margin-left: auto;
     width: 80%;
     color: #fff;
-    background-color: red;
+    background-color: #333;
     border: none;
     font-weight: 500;
     padding: 0.5rem;
@@ -131,7 +119,15 @@ nav div span .icon{
 .logout-btn > .icon{
     font-size: 1.2rem;
 }
-
+.menu-btn{
+    position: absolute;
+    top: 0;
+    right: -2rem;
+    border: none;
+}
+.logout-btn:focus,.menu-btn:focus{
+    outline: none;
+}
 /* Top Bar */
 .top-bar{
     background-color: #f7f7f7;

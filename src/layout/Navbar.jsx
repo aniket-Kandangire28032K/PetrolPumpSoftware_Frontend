@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { IoMenu } from 'react-icons/io5';
 import {NavLink } from 'react-router-dom'
 import { FaChevronRight,FaChevronDown,FaTruck } from "react-icons/fa";
 import { BsFillFuelPumpFill } from "react-icons/bs";
@@ -21,6 +22,12 @@ const Navbar = ({onLogout}) => {
   const handleoption = (name)=>{
     setopen( open === name ? null : name)
   }
+  const hideNavbar = () => {
+    const btn = document.querySelector("nav");
+    const main = document.querySelector("main");
+    btn.classList.toggle("hide");
+    main.classList.toggle("main");
+  };
   return (
     <>
     <div>
@@ -69,6 +76,7 @@ const Navbar = ({onLogout}) => {
       <NavLink to="/staff" onClick={()=>handleoption(null)}><BsFilePersonFill className='option-icon'/>Manage Staff</NavLink>
       <NavLink to="/access" onClick={()=>handleoption(null)}><RiAccountCircleFill className='option-icon'/>Access</NavLink>
       <button className='logout-btn' onClick={onLogout}><MdLogout className='icon' />Logout</button>
+      <button className='menu-btn' onClick={hideNavbar}><IoMenu size={30} /></button>
     </div>
     </>
   )

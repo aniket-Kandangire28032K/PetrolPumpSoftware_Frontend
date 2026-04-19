@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./component.css";
 import axios from "axios";
 import Swal from "sweetalert2";
+import URL from "../assets/URL.js";
+
 const AddCustomer = () => {
   const [formData,setFormdata] = useState({
     name:'',
@@ -40,7 +42,7 @@ const AddCustomer = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/customer',formData);
+      await axios.post(`${URL}/api/customer`,formData);
       Swal.fire({
         text:'Customer Added',
         icon:"success"

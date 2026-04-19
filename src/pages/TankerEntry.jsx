@@ -26,13 +26,10 @@ const TankerEntry = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev=>{
-      let newValue=value
-      if(name === "transportnumber"){
-      newValue = value.replace(/\D/g, "")
-    }
+      
      return {
       ...prev,
-      [name]: newValue,
+      [name]: value,
     }});
   };
 

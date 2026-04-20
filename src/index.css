@@ -283,3 +283,11 @@ input:focus, select:focus{
         display: none;
     }
 }
+
+button{
+    transition: all ease-in-out 0.3s;
+}
+main button:hover{
+    transform: translateY(-2px);
+
+}

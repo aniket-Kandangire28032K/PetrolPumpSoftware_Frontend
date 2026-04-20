@@ -26,7 +26,6 @@ const TankerEntry = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev=>{
-      
      return {
       ...prev,
       [name]: value,
@@ -130,53 +129,53 @@ const TankerEntry = () => {
     <div className="tanker-entry">
       <h1>Invoice Form</h1>
       <form onSubmit={handleSubmit} autoComplete="off">
-        <div>
+        <div className="inputfield">
           <label>Company Name:</label>
           <input type="text" name="companyname"  value={formData.companyname} onChange={handleChange}/>
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Invoice No:</label>
           <input type="text" name="invoiceno" onChange={handleChange} value={formData.invoiceno}/>
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Invoice Date:</label>
           <input type="date" name="invoicedate" onChange={handleChange} value={formData.invoicedate} />
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Delivery Date:</label>
           <input type="date" name="deliverydate" onChange={handleChange} value={formData.deliverydate}/>
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Challan No:</label>
           <input type="text" name="challanno" onChange={handleChange} value={formData.challanno}/>
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Challan Date:</label>
           <input type="date" name="challandate" onChange={handleChange} value={formData.challandate}/>
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">GST No:</label>
           <input type="text" name="gstno" onChange={handleChange} value={formData.gstno}/>
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Transporter Name</label>
           <input type="text" name="transportername" onChange={handleChange} value={formData.transportername} />
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Transport Contact</label>
           <input type="number" maxLength={10} name="transportercontact" onChange={handleChange} value={formData.transportercontact} />
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Vehicle No:</label>
           <input type="text" name="transportnumber" onChange={handleChange} value={formData.transportnumber} />
         </div>
-        <div>
+        <div className="inputfield">
           <label>Delivery Charges</label>
           <input type="number"  min={0} value={formData.dlycharge} name="dlycharge"
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="inputfield">
           <label htmlFor="">Remark:</label>
           <input type="text" name="remark" onChange={handleChange} value={formData.remark}/>
         </div>

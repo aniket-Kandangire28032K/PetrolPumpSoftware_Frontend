@@ -329,27 +329,21 @@
 .tanker-entry form {
   width: 100%;
   padding: 0.1rem 2rem;
+  padding-top: 1rem;
   display: grid;
-  gap: 0.5rem;
-  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem ;
+  grid-template-columns: repeat(4, 1fr);
 }
+  
 .tanker-entry form div {
-  grid-column: span 1;
-  /* border: 1px solid; */
+  grid-column: span 2;
   display: flex;
 }
-.tanker-entry form div label {
-  width: 30%;
-  white-space: nowrap;
-}
-.tanker-entry form div input {
-  width: 70%;
-  padding: 0.3rem;
-}
+
 .tanker-entry form div:last-of-type {
   text-align: center;
-
-  grid-column: span 3;
+  justify-content: center;
+  grid-column: span 4;
 }
 .tanker-entry form div:last-of-type > button {
   padding: 0.5rem 2rem;
@@ -365,8 +359,24 @@
   background-color: grey;
 }
 @scope (.tanker-entry) {
+  label{
+    color: #3d3d3d !important;
+    margin-bottom: 0.3rem; 
+    font-family: monospace;
+    font-size: 1.2rem;
+  }
+  input,select{
+    width: 95%;
+    padding:0.6rem  0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    margin-top: 0.2rem;
+    box-shadow: 1px 1px 4px #aaa;
+    /* background-color: #eeffff; */
+  }
   .items {
-    grid-column: span 3 !important;
+    padding-top: 0.6rem;
+    grid-column: span 4 !important;
   }
   .items table {
     width: 100%;
@@ -393,6 +403,20 @@
     background-color: transparent;
     font-weight: 700;
     border-bottom: 2px solid;
+  }
+  .inputfield{
+    flex-direction: column;
+    width: 70%;
+    justify-self: center;
+  }
+  .inputfield:nth-of-type(odd){
+    justify-self: end;
+    padding-right: 2rem;
+  }
+  .inputfield:nth-of-type(even){
+    justify-self: start;
+    padding-left: 2rem;
+
   }
 }
 /* cutomers page */
@@ -1219,18 +1243,45 @@
   option {
     text-transform: capitalize;
   }
-  form > button[type="submit"] {
-    grid-column: span 2/4;
+  .btn-grp{
+    grid-column: span 4;
+    width: 50%;
+    margin:  0 auto;
+    display: flex;
+    justify-content: center;
+    gap:2rem ;
+  }
+
+  button[type="submit"],form button[type="reset"] {
     width: 25%;
-    margin: 0 auto;
     padding: 0.3rem 0;
     font-size: 1.2rem;
     border-radius: 6px;
-    border: none;
+    border: 2px solid;
     font-weight: 500;
     text-transform: uppercase;
-    background-color: royalblue;
+  
+
+  }
+  button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px  rgb(0 0 0 / 0.2);
+  }
+  button[type="submit"]{
+    background-color: #008fff;
     color: #fff;
+    border-color: #008fff;
+  }
+  button[type="submit"]:hover{
+    background-color: #005fff;
+  }
+  button[type="reset"]{
+    background-color: white;
+    color: royalblue;
+  }
+  button[type="reset"]:hover{
+    background-color: #f0feff;
+    color: #003fff;
   }
   .details {
     grid-column: span 5;

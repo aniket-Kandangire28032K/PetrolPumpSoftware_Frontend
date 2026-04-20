@@ -60,7 +60,7 @@ const ShiftCard = () => {
     setPayment_Mode((prev) => [
       ...prev,
       {
-        paymentMode: "cash",
+        paymentMode: "",
         amount: 0,
       },
     ]);
@@ -119,6 +119,7 @@ const ShiftCard = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     
     try {
@@ -128,6 +129,7 @@ const ShiftCard = () => {
       console.log(error);
     }finally{
       setLoading(false)
+      handleReset();
     }
   };
   useEffect(() => {
@@ -345,9 +347,11 @@ const ShiftCard = () => {
           {payment_mode.map((mode,num) => (
             <div key={num}>
               <select value={mode.paymentMode} onChange={e=> handlePaymentChange(num,"paymentMode",e.target.value)}>
+                <option value="">Payment Method</option>
                 <option value="cash">Cash</option>
                 <option value="UPI">UPI</option>
                 <option value="Swipe Machine">Swipe Machine</option>
+                <option value="Own Expenses ">Own Expenses</option>
               </select>
               <input type="number" value={mode.amount} min={0} max={shiftDetails.total} onChange={e=> handlePaymentChange(num,"amount",e.target.value)}/>
               <button type="button" className="del-btn" onClick={() =>DeletePaymentMode(num)}>Del</button>
@@ -360,8 +364,10 @@ const ShiftCard = () => {
         <p>Remaining Amount: Rs.{shiftDetails.remainingAmount < 0 ? <strong>****Invalid Amount******</strong> : shiftDetails.remainingAmount}/-</p>
         <hr />
         <p>Total Amount: Rs.{shiftDetails.total}/-</p>
+        <div className="btn-grp">
         <button type="submit" disabled={loading} style={loading ? {opacity:0.3} :{opacity:1}}>Submit</button>
-        <button type="button" onClick={handleReset}>Reset</button>
+        <button type="reset"  onClick={handleReset}>Reset</button>
+        </div>
       </form>
     </div>
   );

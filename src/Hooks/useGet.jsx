@@ -12,9 +12,9 @@ export function useGet(url) {
     try {
       setLoading(true);
       setError(null);
-
       const res = await axios.get(url);
       setData(res.data);
+      console.log(res.data)
     } catch (err) {
       setError(
         err.response?.data?.message ||

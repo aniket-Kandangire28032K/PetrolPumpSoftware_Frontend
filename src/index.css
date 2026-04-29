@@ -124,6 +124,7 @@ nav div span .icon{
     top: 0;
     right: -2rem;
     border: none;
+    background-color: transparent !important;
 }
 .logout-btn:focus,.menu-btn:focus{
     outline: none;
@@ -148,7 +149,7 @@ nav div span .icon{
     text-transform: uppercase;
     user-select: none;
     color: red;
-    animation: blink infinite linear 2s;
+    animation: blink infinite linear 4s;
 }
 
 @keyframes blink {
@@ -164,8 +165,7 @@ nav div span .icon{
 .top-bar p{
     font-weight: 500;
     white-space: nowrap;
-    margin: 0 auto;
-    text-align: center;
+    padding-left: 2rem;
 }
 .top-bar button{
     position: fixed;
@@ -287,7 +287,24 @@ input:focus, select:focus{
 button{
     transition: all ease-in-out 0.3s;
 }
+button:focus{
+    outline: none;
+}
 main button:hover{
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 
 }
+.navbtn{
+   background-color: #fff; 
+   color: #000fff;
+   border: 1px solid  #000fff;
+   padding: 0.3rem 1rem;
+   border-radius: 9px;
+   margin-left: 1rem;
+   font-weight: 500;
+  }
+  .navbtn:hover{
+    background-color: #008fff;
+    color: #fff;
+
+  }

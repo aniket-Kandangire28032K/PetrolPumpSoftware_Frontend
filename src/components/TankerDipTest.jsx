@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
+import URL from '../assets/URL.js';
+
 
 const TankerDipTest = () => {
     const [loading,setLoading]= useState(false)
+    const [loading1,setLoading1]= useState(false)
+    const [testList,setTestLIst] = useState([])
     const [testData,setTestData] = useState({
         date:"",
         arivalTime:"",
@@ -23,11 +28,11 @@ const TankerDipTest = () => {
         }))
 
     }
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         setLoading(true)
         e.preventDefault();
         try {
-            console.log(testData)
+            const res = await axios.post(`${URL}/api/tanker-test`,testData);
             Swal.fire({
                       toast:true,
                       showConfirmButton:false,
@@ -57,12 +62,12 @@ const TankerDipTest = () => {
                     })
         }finally{
             setLoading(false);
-            // clearData();
-
+            clearData();
         }
     }
     const clearData = ( ) =>{
         // Reseter Function
+        getData();
         setTestData({
         date:"",
         arivalTime:"",
@@ -76,6 +81,42 @@ const TankerDipTest = () => {
         waterDip:0
      })   
     }
+  const getData = async ()  => {
+    setLoading1(true)
+    try {
+      const res = await axios.get(`${URL}/api/tanker-test`)
+      console.log(res.data.BackendData)
+      setTestLIst(res.data.BackendData);
+    } catch (error) {
+      console.log(error)
+    }finally{
+      setLoading1(false)
+    }
+  }
+  useEffect(()=>{
+    getData();
+  },[])
+  
+  const DeleteTest = async(id)=>{
+    const res = await Swal.fire({
+      icon:"warning",
+      title:"Deleted",
+      text:"Are you sure? This action cannot be undone.",
+      showCancelButton:true,
+    })
+    try {
+      console.log(`${URL}/api/tanker-test/${id}`)
+      if(res.isConfirmed){
+        const result = await axios.delete(`${URL}/api/tanker-test/${id}`)
+      }
+      Swal.fire('Deleted','Data deleted successfuly','success');
+    } catch (error) {
+        console.log(error)
+    }finally{
+      getData();
+    }
+  }
+
   return (
     <>
     <h2 style={{textAlign:'center'}}>Import Tank Dip Test</h2>
@@ -160,6 +201,54 @@ const TankerDipTest = () => {
           </button>
         </div>
     </form>
+    <div>
+      <table border={1}>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Product</th>
+            <th>Vehical No.</th>
+            <th>Vehical Contact.</th>
+            <th>Dept. Stock</th>
+            <th>Product Dip</th>
+            <th>Arived Stcok</th>
+            <th>Variation</th>
+            <th>Water Dip</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          { 
+            testList.length == 0 && <tr>
+              <td colSpan={10}><strong>No Data Available</strong></td>
+            </tr>
+          }
+          { 
+            loading1 && <tr>
+              <td colSpan={10}><h2>Data Loading...</h2></td>
+            </tr>
+          }
+          { testList.length > 0 &&
+            testList?.map((item)=> (
+              <tr key={item._id}>
+                <td>{item.date} </td>
+                <td>{item.arivalTime}</td>
+                <td>{item.product}</td>
+                <td>{item.vehicalNo}</td>
+                <td>{item.vehicalContact}</td>
+                <td>{item.departureStock}</td>
+                <td>{item.productDip}</td>
+                <td>{item.arivalStock}</td>
+                <td>{item.variation}</td>
+                <td>{item.waterDip || 0}</td>
+                <td><button>View</button> | <button className='del-btn' onClick={()=>DeleteTest(item._id)}>Del</button></td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
     </>
   )
 }

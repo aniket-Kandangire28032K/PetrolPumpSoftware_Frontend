@@ -1,8 +1,8 @@
 import { Routes,Route } from "react-router-dom"
 import { lazy } from "react"
 import { useSelector } from "react-redux"
-
 import LoginPage from '../pages/LoginPage.jsx'
+
 const Error = lazy(()=> import("./Error.jsx"))
 const Customer = lazy(()=> import("../pages/Customer.jsx"))
 const AccessPage = lazy(()=> import("../pages/AccessPage.jsx") )
@@ -16,7 +16,7 @@ const ManageInvoices = lazy(()=> import('../pages/ManageInvoices.jsx'))
 const Staff = lazy(()=> import("../pages/StaffPage.jsx"))
 const ShiftCard = lazy(()=> import("../pages/ShiftCard.jsx"))
 const Shift = lazy(()=> import("../pages/Shifts.jsx"))
-const TankStock = lazy(()=> import("../pages/TankStock.jsx"))
+
 const Expense = lazy(()=> import("../pages/ExpencessManagement.jsx"))
 const CAreport = lazy(()=> import('../pages/CAReportPage.jsx'))
 const Dashboard = lazy(()=> import("../pages/Dashboard.jsx"))
@@ -24,11 +24,14 @@ const DipTest = lazy(()=> import('../pages/DipTest.jsx'))
 const Lube = lazy(()=> import('../pages/Lube.jsx'))
 const Resquest = lazy(()=> import('../pages/ExpensesRequest.jsx'))
 const LubEntry = lazy(()=> import('../pages/LubePurches.jsx'))
- 
+const LubeStock = lazy(()=> import('../pages/LubeStock.jsx'))
+const TopNavbar = lazy(()=> import('../layout/TopNavbar.jsx'))
+
 const Main = () => {
   const role = useSelector(state => state.user.role)
   return (
     <div>
+      <TopNavbar />
       <Routes>
         <Route path='/' element={<Dashboard/>}/>
         <Route path='/access' element={<AccessPage/>}/>
@@ -48,9 +51,8 @@ const Main = () => {
         <Route path='/sales' element={<Sales/>}/>
         <Route path="/supplier" element={<Supplier/>}/>
         <Route path="/supplier-manage" element={<ManagaeSuppliers/>}/>
-        <Route path="/tank-stock" element={<TankStock/>}/>
         <Route path="/lube-entry" element={<LubEntry/>}/>
-        
+        <Route path='/lube-stock' element={<LubeStock/>}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
     </div>

@@ -81,7 +81,7 @@ const ManageFuel = () => {
             <th>Rate(₹)</th>
             
             <th>Tank</th>
-            <th>Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -118,7 +118,7 @@ const ManageFuel = () => {
                 <td>
                   <button type="button" onClick={() => editOpen(item)}>
                     Edit
-                  </button>
+                  </button> |
                   <button onClick={() => DeleteFuel(item._id, item.name)}>
                     Del
                   </button>

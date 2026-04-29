@@ -41,7 +41,8 @@ const ExpenseManagement = () => {
     } catch (error) {
       console.log(error)
     }finally{
-      // setExpenses([{ category: "", amount: "", date: "", paymentMode: "Cash", notes: "" }]);
+      setExpenses([{ category: "", amount: "", date: "", paymentMode: "Cash", notes: "" }]);
+      // getExpenses();
     }
   };
   // Grand total

@@ -21,7 +21,7 @@ const LubePurches = () => {
       {
         productName: "",
         productStock: "",
-        perProductQty: "",
+        netVolume: "",
         perProductRate: "",
         gstPer: 0,
         gstAmount: 0,
@@ -71,7 +71,7 @@ const LubePurches = () => {
         {
           productName: "",
           productStock: "",
-          perProductQty: "",
+          netVolume: "",
           perProductRate: "",
           gstPer: 0,
           gstAmount: 0,
@@ -131,7 +131,7 @@ const LubePurches = () => {
           {
             productName: "",
             productStock: "",
-            perProductQty: "",
+            netVolume: "",
             perProductRate: "",
             gstPer: 0,
             gstAmount: 0,
@@ -199,6 +199,7 @@ const LubePurches = () => {
       getData();
     }
   },[LubeData])
+  
   useEffect(()=>{
     let total = lubeData.productList.reduce((sum,item)=> sum+Number(item.productTotal) || 0 , 0);
     setLubeData( prev =>{
@@ -225,7 +226,6 @@ const LubePurches = () => {
         <button type="button" onClick={toggleDisplay}>
           { display === 'form' ?  "Lube History" : "Lube Form" }
         </button>
-        
       </div>
       {display === "form" && (
         <form onSubmit={HandleSubmit}>
@@ -303,12 +303,12 @@ const LubePurches = () => {
                   />
                 </div>
                 <div className="inputfield">
-                  <label htmlFor="">Per Product qty</label>
+                  <label htmlFor="">Net Volume</label>
                   <input
-                    type="number"
-                    value={prod.perProductQty}
+                    type="text"
+                    value={prod.netVolume}
                     onChange={(e) =>
-                      handleProductEdit("perProductQty", num, Number(e.target.value))
+                      handleProductEdit("netVolume", num, e.target.value)
                     }
                   />
                 </div>

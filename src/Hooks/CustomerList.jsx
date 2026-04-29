@@ -9,7 +9,7 @@ const useCustomerList = () => {
     try {
       const res = await axios.get(`${URL}/api/customer`)
       setCustomerList(res.data.customers); 
-      console.log(res.data.customers) 
+    //   console.log(res.data.customers) 
       setSuccess(true)  
     } catch (error) {
         setSuccess(false)  

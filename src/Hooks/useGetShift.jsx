@@ -12,6 +12,7 @@ const useGetShift = () => {
     try {
       const res = await axios.get(`${URL}/api/shift`);
       setShiftData(res.data.shiftData);
+      // console.log(res.data.shiftData)
       setShiftDataError("");
     } catch (error) {
       console.log(error);

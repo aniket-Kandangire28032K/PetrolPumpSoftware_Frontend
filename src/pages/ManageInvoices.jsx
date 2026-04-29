@@ -219,13 +219,15 @@ const ManageInvoices = () => {
               </td>
               <td>
                 {invoice.finaltotal}{" "}
+              </td>  
+              <td className="btn-grp">
                 <button
                   type="button"
                   className="edit-btn"
                   onClick={() => openEditOption(invoice)}
                 >
                   Edit
-                </button>
+                </button> |
                 <button
                   type="button"
                   className="del-btn"

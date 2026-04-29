@@ -45,6 +45,7 @@ const FuelAdd = () => {
         <div>
           <label>Product Name:</label>
           <select name="name" value={postData.name} onChange={(e) => handleChange(e)} required>
+            <option>Type</option>
             <option value="petrol">Petrol</option>
             <option value="diesel">Diesel</option>
             <option value="CNG">CNG</option>

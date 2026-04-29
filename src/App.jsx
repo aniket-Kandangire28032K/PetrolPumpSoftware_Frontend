@@ -20,7 +20,6 @@ function App() {
     <>
       <Suspense fallback={<Loading />}>
         {isAuth ?<>
-          <TopNavbar />
           <nav>
             <Navbar onLogout={handleLogout}/>
           </nav>

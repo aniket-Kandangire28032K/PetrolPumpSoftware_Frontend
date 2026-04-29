@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import PrintBtn from "../components/PrintBtn.jsx";
+import { useNavigate } from "react-router-dom";
+
 
 const Lube = () => {
+  const navigate = useNavigate();
   const URL = import.meta.env.VITE_BACKEND_URL;
   const [loading, setLoading] = useState(false);
   const [lubeHistory, setLubeHistory] = useState([]);
@@ -172,9 +175,13 @@ const printRecipt = (item) =>{
   newTab.document.write(HTMLTemplet);
   newTab.document/close();
 }
+const jumpPage = ()=>{
+  navigate('/lube-stock')
+}
   return (
     <div className="lube">
       <h2>Lube Sold</h2>
+      <button className="navbtn" onClick={()=> navigate('/lube-stock')}>Lube Stock</button>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div>
           <label>Date</label>
@@ -207,7 +214,7 @@ const printRecipt = (item) =>{
           />
         </div>
         <div>
-          <label>Qty in (ml)</label>
+          <label>Net Volume in (ml)</label>
           <input
             type="number"
             value={lubeData.qty}

@@ -16,7 +16,7 @@
 }
 .customer form h2{
     grid-column: span 2;
-    padding-left: 1rem;
+    text-align: center;
 }
 
 .customer form label{
@@ -30,24 +30,32 @@
     font-size: 1.1rem;
     border: 1px solid #ccc;
     padding: .5rem;
+    border-radius: 5px;
     margin-left: .7rem;
 }
-.customer form button[type='submit']{
+.customer form div{
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    gap:0 3rem;
+    margin-top: 1.5rem;
+    /* border: 1px solid red; */
+}
+
+.customer form button{
+    width: 20% ;
     padding: .5rem 1.5rem;
-    width: fit-content;
-    background-color: #0a72a6;
+    background-color: #008080;
     border: none;
     color: #fff;
     font-weight: 500;
     font-size: 1.1rem;
-    transition: all ease-in-out 0.5s;
-    box-shadow: 0 0 5px #0a72a6;
+    transition: all ease-in-out 0.2s;
     border-radius: .2rem;
 }
-.customer form button[type='submit']:hover{
-    transform: scale(1.1);
+.customer form button:hover{
+    transform: translateY(-1px);
     background-color: #075378;
-    box-shadow: 0 0 10px #075378;
 }
 .customer-list{
     padding:0 1rem;

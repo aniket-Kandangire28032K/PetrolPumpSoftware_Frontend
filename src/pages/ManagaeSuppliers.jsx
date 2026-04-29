@@ -78,7 +78,7 @@ const ManagaeSuppliers = () => {
   return (
     <div className='manage-supplier'>
       <h1>Manage Suppliers</h1>
-      <NavLink to='/supplier'>Add Supplier</NavLink>
+      {/* <NavLink to='/supplier'>Add Supplier</NavLink> */}
       <table border={1}>
         <thead>
           <tr>
@@ -88,7 +88,7 @@ const ManagaeSuppliers = () => {
             <th>Contact</th>
             <th>Address</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th></th>
           </tr>          
         </thead>
         <tbody>
@@ -101,7 +101,7 @@ const ManagaeSuppliers = () => {
               <td>{item?.contact}</td>
               <td>{item?.address}</td>
               <td>{item?.status || "Null"}</td>
-              <td className='actions'><button onClick={()=>EditSupplier(item)} >Edit</button><button onClick={()=>deleteCustomer(item._id)}>Del</button></td>
+              <td className='actions'><button onClick={()=>EditSupplier(item)} >Edit</button> | <button onClick={()=>deleteCustomer(item._id)}>Del</button></td>
             </tr>
           ))
         }

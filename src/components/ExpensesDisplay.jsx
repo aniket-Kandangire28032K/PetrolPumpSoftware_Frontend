@@ -11,6 +11,8 @@ const ExpensesDisplay = () => {
             setExpensesList(res.data.expenses)
         } catch (error) {
             console.log(error)
+        }finally{
+            
         }
     }
     useEffect(()=>{
@@ -48,5 +50,5 @@ const ExpensesDisplay = () => {
     </div>
   )
 }
-
+// export { getExpenses };
 export default ExpensesDisplay

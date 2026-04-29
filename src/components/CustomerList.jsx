@@ -54,8 +54,9 @@ const CustomerList = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Contact</th>
-            <th>Address</th>
-            <th>Action</th>
+            <th>Credits</th>
+            <th colSpan={2}>Address</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -66,6 +67,7 @@ const CustomerList = () => {
                 <td>{e.name}</td>
                 <td>{e.email}</td>
                 <td>{e.contact}</td>
+                <td>{e.credits} / {e.creditslimit} </td>
                 <td>{e.address}</td>
                 <td>
                   <button>Edit</button>

@@ -59,7 +59,7 @@ const DipTest = () => {
     try {
       const res =await axios.post(`${URL}/api/diptest`,dipData)
       console.log(res.data)
-      Swal.fire("Sucess","DIP Test Data Added","success")
+      Swal.fire("Sucess","DIP Test Data Added ","success")
     } catch (error) {
       console.log(error.response)
       Swal.fire("Error","Internal Server Error","error")
